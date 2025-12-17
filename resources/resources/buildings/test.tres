@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RBuilding" load_steps=3 format=3 uid="uid://7hyb82hwrlt5"]
+
+[ext_resource type="Script" uid="uid://dpevskfowsdkc" path="res://src/resource-definition/building.gd" id="1_eqc0x"]
+[ext_resource type="Texture2D" uid="uid://ccq1y4msh1bus" path="res://icon.svg" id="2_jsttr"]
+
+[resource]
+script = ExtResource("1_eqc0x")
+name = "Test building"
+texture = ExtResource("2_jsttr")
+metadata/_custom_type_script = "uid://dpevskfowsdkc"
