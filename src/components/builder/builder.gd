@@ -1,8 +1,7 @@
 extends Node2D
 
-const BuildingNode = preload ("res://src/components/building/building.gd")
 const eventConstants = preload("res://src/constants/events.gd")
-const testBuildingTexture = preload("res://icon.svg")
+const testBuildingTexture = preload("res://resources/images/building6464.png")
 
 @onready var buildingNode: BuildingNode = $Building
 
@@ -29,6 +28,6 @@ func startBuilding() -> void:
   else:
     _isBuildingStarted = true
 
-    var building: RBuilding = RBuilding.new("Test", Vector2.ONE, testBuildingTexture)
+    var building: RBuilding = RBuilding.new("Test", Vector2(2, 2), testBuildingTexture)
     buildingNode.setBuilding(building)
     buildingNode.show()
