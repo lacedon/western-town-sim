@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 GameConfig="*res://src/global/game-config.gd"
 EventEmitter="*res://src/global/event-emitter.gd"
 
+[layer_names]
+
+2d_physics/layer_1="Buildings"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

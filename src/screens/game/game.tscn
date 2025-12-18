@@ -5,6 +5,9 @@
 
 [node name="Game" type="Node2D"]
 
-[node name="Builder" parent="." instance=ExtResource("1_sjmr0")]
+[node name="Builder" parent="." node_paths=PackedStringArray("buildingContainer") instance=ExtResource("1_sjmr0")]
+buildingContainer = NodePath("../Buildings")
 
 [node name="GameUI" parent="." instance=ExtResource("1_eyx8b")]
+
+[node name="Buildings" type="Node" parent="."]
