@@ -4,6 +4,8 @@ class_name BuildingNode
 
 signal areaEnteredExited
 
+const BuildingScene = preload('./building.tscn')
+
 enum BuildingMode {
   planing,
   placed,
@@ -23,6 +25,16 @@ const ModeColors = {
 @export var mode: BuildingMode = BuildingMode.planing
 @export var building: RBuilding = null
 
+static func clone(originalBuilding: BuildingNode) -> BuildingNode:
+  return BuildingNode.create(originalBuilding.building, originalBuilding.mode, originalBuilding.position)
+
+static func create(_building: RBuilding, _mode: = BuildingMode.planing, _position: = Vector2.ZERO) -> BuildingNode:
+  var createdBuilding: BuildingNode = BuildingScene.instantiate()
+  createdBuilding.position = _position
+  createdBuilding.building = _building
+  createdBuilding.mode = _mode
+  return createdBuilding
+
 func _ready() -> void:
   _initBuilding()
 
@@ -41,7 +53,7 @@ func _initBuilding() -> void:
 
   sprite.texture = building.texture
 
-  coloringBlock.custom_minimum_size = buildingSizeInPixels
+  coloringBlock.size = buildingSizeInPixels
   coloringBlock.position = buildingCenteringPosition
   updateColoring()
   coloringBlock.show()

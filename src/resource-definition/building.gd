@@ -14,3 +14,10 @@ func _init(
 @export var name: String = ":: Build ::"
 @export var size: Vector2i = Vector2i.ONE
 @export var texture: Texture2D
+
+func clone() -> RBuilding:
+  return RBuilding.new(
+    self.name,
+    self.size,
+    self.texture.duplicate(),
+  )

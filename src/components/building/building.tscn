@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://blkemfy0s0ptn" path="res://src/components/building/building.gd" id="1_wdote"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u6fmq"]
+resource_local_to_scene = true
 
 [node name="Building" type="Node2D"]
 script = ExtResource("1_wdote")
