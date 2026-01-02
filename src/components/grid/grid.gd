@@ -1,17 +1,18 @@
 extends Node2D
 
+const lineSize: int = 2000
+const lineWidth: int = 1
+const lineNumber: int = 100
+
 func _ready() -> void:
-  for i in range(100):
+  for index in range(lineNumber):
+    add_child(_createLine(index, true))
+    add_child(_createLine(index, false))
 
-    var x_line = Line2D.new()
-    x_line.width = 1
-    var x_coordinate = i * GameConfig.tileSize.x
-    x_line.points = [Vector2(x_coordinate, 0), Vector2(x_coordinate, 1000)]
-
-    var y_line = Line2D.new()
-    y_line.width = 1
-    var y_coordinate = i * GameConfig.tileSize.y
-    y_line.points = [Vector2(0, y_coordinate), Vector2(1000, y_coordinate)]
-
-    add_child(x_line)
-    add_child(y_line)
+func _createLine(index: int, isHorizontal: bool) -> Line2D:
+    var line = Line2D.new()
+    line.width = lineWidth
+    line.default_color = Color.DIM_GRAY
+    var coordinate = index * (GameConfig.tileSize.x if isHorizontal else GameConfig.tileSize.y)
+    line.points = [Vector2(coordinate, 0), Vector2(coordinate, lineSize)] if isHorizontal else [Vector2(0, coordinate), Vector2(lineSize, coordinate)]
+    return line
