@@ -12,8 +12,8 @@ enum BuildingMode {
 }
 
 const ModeColors = {
-  planingSuccess = Color(.25, 1, .25, .75),
-  planingError = Color(1, .25, .25, .75),
+  planingSuccess = Color(.25, 1, .25, .25),
+  planingError = Color(1, .25, .25, .25),
   normal = Color(1, 1, 1, 0),
 }
 
