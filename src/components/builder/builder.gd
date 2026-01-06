@@ -41,7 +41,7 @@ func _input(event: InputEvent) -> void:
     # Start placing building
     if event.is_pressed() && buildingNode.canBePlaced():
       _isPlacingStarted = true
-      _placingStartCoordinates = event.position
+      _placingStartCoordinates = _parseCoordinates(event.position, false)
       # Place the first building in the chain
       if buildingNode.building.buildingMode == RBuilding.BuildingMode.chaining:
         placeBuilding()
@@ -50,18 +50,26 @@ func _input(event: InputEvent) -> void:
       # Place building and stop placing
       if event.button_index == MOUSE_BUTTON_LEFT:
         # Place chain of buildings
-        # TODO: Fix it. Should make a line of the buildings
+        # TODO: Refactor this mess
         if buildingNode.building.buildingMode == RBuilding.BuildingMode.chaining:
           var targetX: float = _parseCoordinate(event.position, 0, false)
-          var targetY: float = _parseCoordinate(event.position, 0, false)
-          var minStepCount: int = floor(min(abs(_placingStartCoordinates.x - targetX), abs(_placingStartCoordinates.y - targetY)))
-          prints('minStepCount', minStepCount)
-          for stepIndex in range(minStepCount):
-            var placedBuilding = placeBuilding()
-            placedBuilding.position = Vector2(
-              (targetX + stepIndex) * GameConfig.tileSize.x,
-              (targetY + stepIndex) * GameConfig.tileSize.y
-            )
+          var targetY: float = _parseCoordinate(event.position, 1, false)
+          var isXBigger: bool = abs(_placingStartCoordinates.x - targetX) > abs(_placingStartCoordinates.y - targetY)
+
+          if isXBigger:
+            var xStep: int = 1 if _placingStartCoordinates.x < targetX else -1
+            for x in range(_placingStartCoordinates.x, targetX, xStep):
+              placeBuilding(tileCoordinatesToPixels(Vector2(x + xStep, _placingStartCoordinates.y)))
+            var yStep: int = 1 if _placingStartCoordinates.y < targetY else -1
+            for y in range(_placingStartCoordinates.y, targetY, yStep):
+              placeBuilding(tileCoordinatesToPixels(Vector2(targetX, y + yStep)))
+          else:
+            var yStep: int = 1 if _placingStartCoordinates.y < targetY else -1
+            for y in range(_placingStartCoordinates.y, targetY, yStep):
+              placeBuilding(tileCoordinatesToPixels(Vector2(_placingStartCoordinates.x, y + yStep)))
+            var xStep: int = 1 if _placingStartCoordinates.x < targetX else -1
+            for x in range(_placingStartCoordinates.x, targetX, xStep):
+              placeBuilding(tileCoordinatesToPixels(Vector2(x + xStep, targetY)))
 
         elif buildingNode.canBePlaced():
           placeBuilding()
@@ -81,6 +89,18 @@ func _parseCoordinate(eventPosition: Vector2, coordinateIndex: int, shouldReturn
   )
   return tileCoordinate * tileSize if shouldReturnPixels else tileCoordinate
 
+func _parseCoordinates(eventPosition: Vector2, shouldReturnPixels = true) -> Vector2:
+  return Vector2(
+    _parseCoordinate(eventPosition, 0, shouldReturnPixels),
+    _parseCoordinate(eventPosition, 1, shouldReturnPixels)
+  )
+
+func tileCoordinatesToPixels(tileCoordinates: Vector2) -> Vector2:
+  return Vector2(
+    (tileCoordinates.x + (0.5 if isOdd.isOdd(buildingNode.building.size.x) else 0.))* GameConfig.tileSize.x,
+    (tileCoordinates.y + (0.5 if isOdd.isOdd(buildingNode.building.size.y) else 0.))* GameConfig.tileSize.y
+  )
+
 func _updateBuildingColoring() -> void:
   buildingNode.updateColoring()
 
@@ -98,9 +118,11 @@ func stopPlacingBuilding() -> void:
   buildingNode.hide()
   _buildingIndex = (_buildingIndex + 1) % _buildings.size()
 
-func placeBuilding() -> BuildingNode:
+func placeBuilding(buildingPosition: Vector2 = Vector2.INF) -> BuildingNode:
   # TODO: Rewrite to use entity-pool
   var building: BuildingNode = BuildingNode.clone(buildingNode)
   building.mode = BuildingNode.BuildingMode.placed
   buildingContainer.add_child(building)
+  if buildingPosition != Vector2.INF:
+    building.position = buildingPosition
   return building
