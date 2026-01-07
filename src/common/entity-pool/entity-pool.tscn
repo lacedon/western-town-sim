@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs4o8u6ac27pq"]
+
+[ext_resource type="Script" uid="uid://khcxwwb3b5sh" path="res://src/common/entity-pool/entity_pool.gd" id="1_oj6yu"]
+
+[node name="EntityPool" type="Node"]
+script = ExtResource("1_oj6yu")
