@@ -1,10 +1,6 @@
 extends Node2D
 
 const eventConstants = preload("res://src/constants/events.gd")
-const testBuildingTexture11 = preload("res://resources/images/1x1.png")
-const testBuildingTexture22 = preload("res://resources/images/2x2.png")
-const testBuildingTexture23 = preload("res://resources/images/2x3.png")
-const testBuildingTexture33 = preload("res://resources/images/3x3.png")
 const BuildingScene = preload("res://src/components/building/building.tscn")
 const isOdd = preload("res://src/common/is-odd.gd")
 
@@ -15,14 +11,6 @@ const isOdd = preload("res://src/common/is-odd.gd")
 var _isBuildingStarted: bool = false
 var _isPlacingStarted: bool = false
 var _placingStartCoordinates: Vector2 = Vector2.ZERO
-
-var _buildingIndex: int = 0
-var _buildings: Array[RBuilding] = [
-  RBuilding.new("Test-1x1", Vector2(1, 1), testBuildingTexture11, RBuilding.BuildingMode.chaining),
-  RBuilding.new("Test-2x2", Vector2(2, 2), testBuildingTexture22),
-  RBuilding.new("Test-2x3", Vector2(3, 2), testBuildingTexture23),
-  RBuilding.new("Test-3x3", Vector2(3, 3), testBuildingTexture33),
-]
 
 func _ready() -> void:
   EventEmitter.addListener(eventConstants.START_BUILDING, startPlacingBuilding)
@@ -104,19 +92,17 @@ func tileCoordinatesToPixels(tileCoordinates: Vector2) -> Vector2:
 func _updateBuildingColoring() -> void:
   buildingNode.updateColoring()
 
-func startPlacingBuilding() -> void:
-    _isBuildingStarted = true
+func startPlacingBuilding(building: RBuilding) -> void:
+  _isBuildingStarted = true
 
-    var building: RBuilding = _buildings[_buildingIndex]
-    buildingNode.setBuilding(building)
-    buildingNode.show()
+  buildingNode.setBuilding(building)
+  buildingNode.show()
 
 func stopPlacingBuilding() -> void:
   _isBuildingStarted = false
   _isPlacingStarted = false
   buildingNode.setBuilding(null)
   buildingNode.hide()
-  _buildingIndex = (_buildingIndex + 1) % _buildings.size()
 
 func placeBuilding(buildingPosition: Vector2 = Vector2.INF) -> BuildingNode:
   # TODO: Rewrite to use entity-pool

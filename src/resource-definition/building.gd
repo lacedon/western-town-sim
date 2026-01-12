@@ -9,25 +9,29 @@ enum BuildingMode {
 }
 
 func _init(
-  _name: String,
-  _size: Vector2i,
-  _texture: Texture2D,
-  _buildingMode: BuildingMode = BuildingMode.normal
+  _name: String = self.name,
+  _size: Vector2i = self.size,
+  _texture: Texture2D = self.texture,
+  _buildingMode: BuildingMode = self.buildingMode,
+  _functions: Array[BuildingFunction] = self.functions,
 ):
-  name = _name
-  size = _size
-  texture = _texture
-  buildingMode = _buildingMode
+  self.name = _name
+  self.size = _size
+  self.texture = _texture
+  self.buildingMode = _buildingMode
+  self.functions = _functions
 
-@export var name: String = ":: Build ::"
+@export var name: String = ":: Building ::"
 @export var size: Vector2i = Vector2i.ONE
 @export var buildingMode: BuildingMode = BuildingMode.normal
 @export var texture: Texture2D
+@export var functions: Array[BuildingFunction] = []
 
 func clone() -> RBuilding:
   return RBuilding.new(
     self.name,
     self.size,
     self.texture.duplicate(),
-    self.buildingMode
+    self.buildingMode,
+    self.functions,
   )

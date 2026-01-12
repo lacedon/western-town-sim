@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RBuilding" load_steps=5 format=3 uid="uid://5ugpau5k357v"]
+
+[ext_resource type="Script" uid="uid://dpevskfowsdkc" path="res://src/resource-definition/building.gd" id="1_f5vc7"]
+[ext_resource type="Script" uid="uid://bul07m0x4lddb" path="res://src/resource-definition/building-function/building-function.gd" id="1_qsk0w"]
+[ext_resource type="Resource" uid="uid://byw3sne42y4dh" path="res://resources/resources/building-functions/food-farm.tres" id="2_0lkvr"]
+[ext_resource type="Texture2D" uid="uid://ch5jvwwxtkdba" path="res://resources/images/farm.png" id="2_f546y"]
+
+[resource]
+script = ExtResource("1_f5vc7")
+name = "Farm"
+size = Vector2i(3, 2)
+texture = ExtResource("2_f546y")
+functions = Array[ExtResource("1_qsk0w")]([ExtResource("2_0lkvr")])
+metadata/_custom_type_script = "uid://dpevskfowsdkc"
