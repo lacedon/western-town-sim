@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8brnah61hyls"]
+
+[ext_resource type="Script" uid="uid://b6j70q6bvn1mm" path="res://src/ui/game/resources/resource.gd" id="1_i3ixf"]
+
+[node name="Resource" type="PanelContainer"]
+offset_right = 123.0
+offset_bottom = 23.0
+script = ExtResource("1_i3ixf")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Resource"
+
+[node name="LabelDivider" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = ": "
+
+[node name="Value" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="ValueDivider" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "/"
+
+[node name="Max" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
