@@ -35,3 +35,11 @@ func clone() -> RBuilding:
     self.buildingMode,
     self.functions,
   )
+
+func onBuildingPlaced() -> void:
+  for function in functions:
+    function.onBuildingPlaced(self)
+
+func onBuildingDestroyed() -> void:
+  for function in functions:
+    function.onBuildingDestroyed(self)

@@ -17,11 +17,11 @@ func _exit_tree() -> void:
 func updateResource(resourceName: String, value: int) -> void:
   ## TODO: Rework it not to work with magic strings
   match resourceName:
-    'food': resourceFood.updateValue(value)
-    'capacity': resourceCapacity.updateValue(value)
+    'food': resourceFood.changeValue(value)
+    'capacity': resourceCapacity.changeValue(value)
 
 func updateMaxResource(resourceName: String, maxValue: int) -> void:
   ## TODO: Rework it not to work with magic strings
   match resourceName:
-    'food': resourceFood.updateMaxValue(maxValue)
-    'capacity': resourceCapacity.updateMaxValue(maxValue)
+    'food': resourceFood.changeMaxValue(maxValue)
+    'capacity': resourceCapacity.changeMaxValue(maxValue)

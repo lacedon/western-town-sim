@@ -3,7 +3,7 @@ extends Node
 var _emitters: Dictionary = {}
 var _listeners: Dictionary = {}
 
-func addEmitter(signalName: String, emitter: Node) -> void:
+func addEmitter(signalName: String, emitter: Object) -> void:
 	if not _emitters.has(signalName): _emitters[signalName] = []
 
 	_emitters[signalName].append(emitter)
@@ -12,7 +12,7 @@ func addEmitter(signalName: String, emitter: Node) -> void:
 	for listenerMethod in _listeners[signalName]:
 		emitter.connect(signalName, listenerMethod)
 
-func removeEmitter(signalName: String, emitter: Node) -> void:
+func removeEmitter(signalName: String, emitter: Object) -> void:
 	if not _emitters.has(signalName): return
 
 	var emitterIndex: int = _emitters[signalName].find(emitter)
