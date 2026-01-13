@@ -8,9 +8,11 @@ const GameUIResource = preload("./resource.gd")
 
 func _ready() -> void:
   EventEmitter.addListener(eventConstants.UPDATE_RESOURCE, updateResource)
+  EventEmitter.addListener(eventConstants.UPDATE_RESOURCE_MAX, updateMaxResource)
 
 func _exit_tree() -> void:
   EventEmitter.removeListener(eventConstants.UPDATE_RESOURCE, updateResource)
+  EventEmitter.removeListener(eventConstants.UPDATE_RESOURCE_MAX, updateMaxResource)
 
 func updateResource(resourceName: String, value: int) -> void:
   ## TODO: Rework it not to work with magic strings
