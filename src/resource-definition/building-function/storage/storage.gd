@@ -16,8 +16,8 @@ func onBuildingPlaced(_building: RBuilding) -> void:
     self.emit_signal(eventConstants.UPDATE_RESOURCE_MAX, resourceDef.resource.name, resourceDef.maxCapacity)
 
 func onBuildingDestroyed(_building: RBuilding) -> void:
-  # TODO: Rework with analog of _exit_tree
-  EventEmitter.removeEmitter(eventConstants.UPDATE_RESOURCE_MAX, self)
-
   for resourceDef in resources:
     self.emit_signal(eventConstants.UPDATE_RESOURCE_MAX, resourceDef.resource.name, -resourceDef.maxCapacity)
+
+  # TODO: Rework with analog of _exit_tree
+  EventEmitter.removeEmitter(eventConstants.UPDATE_RESOURCE_MAX, self)
