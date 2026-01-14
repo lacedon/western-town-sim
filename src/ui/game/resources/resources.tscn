@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2nb876rxooiu"]
+[gd_scene load_steps=5 format=3 uid="uid://c2nb876rxooiu"]
 
 [ext_resource type="Script" uid="uid://c1a1rosn2woda" path="res://src/ui/game/resources/resources.gd" id="1_5c0t5"]
 [ext_resource type="PackedScene" uid="uid://c8brnah61hyls" path="res://src/ui/game/resources/resource.tscn" id="2_mkv1l"]
+[ext_resource type="Resource" uid="uid://c250lub3odcso" path="res://resources/resources/town-resources/food.tres" id="3_f8ao3"]
+[ext_resource type="Resource" uid="uid://cja3uu5svb7du" path="res://resources/resources/town-resources/person-capacity.tres" id="4_2m4sc"]
 
 [node name="Resources" type="HBoxContainer"]
 offset_right = 268.0
@@ -11,7 +13,9 @@ script = ExtResource("1_5c0t5")
 [node name="ResourceFood" parent="." instance=ExtResource("2_mkv1l")]
 layout_mode = 2
 label = "Food"
+resource = ExtResource("3_f8ao3")
 
 [node name="ResourceCapacity" parent="." instance=ExtResource("2_mkv1l")]
 layout_mode = 2
 label = "Population"
+resource = ExtResource("4_2m4sc")

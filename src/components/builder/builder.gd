@@ -75,7 +75,7 @@ func _parseCoordinate(eventPosition: Vector2, coordinateIndex: int, shouldReturn
     floor(eventPosition[coordinateIndex] / tileSize) +
     (0.5 if isOdd.isOdd(buildingSize) else 0.)
   )
-  return tileCoordinate * tileSize if shouldReturnPixels else tileCoordinate
+  return floor(tileCoordinate * tileSize if shouldReturnPixels else tileCoordinate)
 
 func _parseCoordinates(eventPosition: Vector2, shouldReturnPixels = true) -> Vector2:
   return Vector2(
@@ -111,4 +111,5 @@ func placeBuilding(buildingPosition: Vector2 = Vector2.INF) -> BuildingNode:
   buildingContainer.add_child(building)
   if buildingPosition != Vector2.INF:
     building.position = buildingPosition
+  building.building.onBuildingPlaced()
   return building

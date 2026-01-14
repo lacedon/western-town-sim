@@ -10,6 +10,7 @@ extends PanelContainer
 @export var currentValue: int = 0
 @export var maxValue: int = 0
 @export var shouldShowMax: bool = true
+@export var resource: TownResource
 
 func _ready() -> void:
   _updateView()
