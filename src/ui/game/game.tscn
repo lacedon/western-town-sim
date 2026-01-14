@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://6ujnvld0no1a"]
+[gd_scene load_steps=7 format=3 uid="uid://6ujnvld0no1a"]
 
 [ext_resource type="Script" uid="uid://cmvh1tnrng0gq" path="res://src/ui/game/game.gd" id="1_2g8tl"]
 [ext_resource type="PackedScene" uid="uid://c2nb876rxooiu" path="res://src/ui/game/resources/resources.tscn" id="2_o31er"]
+[ext_resource type="PackedScene" uid="uid://dclykfuuxcxtl" path="res://src/ui/game/actions/start-building.tscn" id="3_t67ik"]
+[ext_resource type="Resource" uid="uid://5ugpau5k357v" path="res://resources/resources/buildings/farm.tres" id="4_5cxrm"]
+[ext_resource type="Resource" uid="uid://c75b544krh5uk" path="res://resources/resources/buildings/food-storage.tres" id="5_uu1cu"]
+[ext_resource type="Resource" uid="uid://dcw4ejp70128k" path="res://resources/resources/buildings/house.tres" id="6_6cxgy"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -37,13 +41,17 @@ size_flags_vertical = 3
 [node name="Actions" type="HBoxContainer" parent="BoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="BuildFarmButton" type="Button" parent="BoxContainer/VBoxContainer/Actions"]
+[node name="StartBuildingFarmCTA" parent="BoxContainer/VBoxContainer/Actions" instance=ExtResource("3_t67ik")]
 layout_mode = 2
 text = "Farm"
+building = ExtResource("4_5cxrm")
 
-[node name="BuildFoodStorageButton" type="Button" parent="BoxContainer/VBoxContainer/Actions"]
+[node name="StartBuildingFoodStorageCTA" parent="BoxContainer/VBoxContainer/Actions" instance=ExtResource("3_t67ik")]
 layout_mode = 2
 text = "Food Storage"
+building = ExtResource("5_uu1cu")
 
-[connection signal="pressed" from="BoxContainer/VBoxContainer/Actions/BuildFarmButton" to="." method="startBuildingFarm"]
-[connection signal="pressed" from="BoxContainer/VBoxContainer/Actions/BuildFoodStorageButton" to="." method="startBuildingFoodStorage"]
+[node name="StartBuildingHouseCTA" parent="BoxContainer/VBoxContainer/Actions" instance=ExtResource("3_t67ik")]
+layout_mode = 2
+text = "House"
+building = ExtResource("6_6cxgy")

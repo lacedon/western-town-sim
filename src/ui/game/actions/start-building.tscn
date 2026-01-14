@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dclykfuuxcxtl"]
+
+[ext_resource type="Script" uid="uid://dxpri7n8rtvh7" path="res://src/ui/game/actions/start_building.gd" id="1_ammwf"]
+
+[node name="StartBuilding" type="Button"]
+script = ExtResource("1_ammwf")
+
+[connection signal="pressed" from="." to="." method="startBuilding"]
