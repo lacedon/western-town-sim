@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://6ujnvld0no1a"]
+[gd_scene load_steps=8 format=3 uid="uid://6ujnvld0no1a"]
 
 [ext_resource type="Script" uid="uid://cmvh1tnrng0gq" path="res://src/ui/game/game.gd" id="1_2g8tl"]
 [ext_resource type="PackedScene" uid="uid://c2nb876rxooiu" path="res://src/ui/game/resources/resources.tscn" id="2_o31er"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://5ugpau5k357v" path="res://resources/resources/buildings/farm.tres" id="4_5cxrm"]
 [ext_resource type="Resource" uid="uid://c75b544krh5uk" path="res://resources/resources/buildings/food-storage.tres" id="5_uu1cu"]
 [ext_resource type="Resource" uid="uid://dcw4ejp70128k" path="res://resources/resources/buildings/house.tres" id="6_6cxgy"]
+[ext_resource type="Resource" uid="uid://833ijgpxgowr" path="res://resources/resources/buildings/road.tres" id="7_5cxrm"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -55,3 +56,8 @@ building = ExtResource("5_uu1cu")
 layout_mode = 2
 text = "House"
 building = ExtResource("6_6cxgy")
+
+[node name="StartBuildingRoadCTA" parent="BoxContainer/VBoxContainer/Actions" instance=ExtResource("3_t67ik")]
+layout_mode = 2
+text = "Road"
+building = ExtResource("7_5cxrm")
