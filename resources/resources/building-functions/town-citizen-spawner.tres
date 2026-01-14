@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="BuildingFunctionSpawner" load_steps=2 format=3 uid="uid://ci3lpxap66tio"]
+
+[ext_resource type="Script" uid="uid://cqyf8ph5jsudd" path="res://src/resource-definition/building-function/spawner/spawner.gd" id="1_k4v0r"]
+
+[resource]
+script = ExtResource("1_k4v0r")
+metadata/_custom_type_script = "uid://cqyf8ph5jsudd"

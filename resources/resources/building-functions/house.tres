@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BuildingFunctionHouse" load_steps=2 format=3 uid="uid://bo6ikoxw5souw"]
+
+[ext_resource type="Script" uid="uid://dsqsoc3q6pjyj" path="res://src/resource-definition/building-function/house/house.gd" id="1_ls3uv"]
+
+[resource]
+script = ExtResource("1_ls3uv")
+name = "House"
+metadata/_custom_type_script = "uid://dsqsoc3q6pjyj"

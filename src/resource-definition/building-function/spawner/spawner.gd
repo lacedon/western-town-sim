@@ -1,0 +1,3 @@
+extends BuildingFunction
+
+class_name BuildingFunctionSpawner
