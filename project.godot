@@ -23,6 +23,7 @@ EventEmitter="*res://src/global/event-emitter.gd"
 [layer_names]
 
 2d_physics/layer_1="Buildings"
+2d_physics/layer_2="Units"
 
 [rendering]
 

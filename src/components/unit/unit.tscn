@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://5nfekmvc45tk"]
+
+[ext_resource type="Script" uid="uid://dxa8xbgq5jfph" path="res://src/components/unit/unit.gd" id="1_tkng7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tkng7"]
+radius = 8.0
+
+[node name="Unit" type="Node2D"]
+script = ExtResource("1_tkng7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_tkng7")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
