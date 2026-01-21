@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5466diq4clt8"]
+[gd_scene load_steps=9 format=3 uid="uid://b5466diq4clt8"]
 
 [ext_resource type="PackedScene" uid="uid://6ujnvld0no1a" path="res://src/ui/game/game.tscn" id="1_eyx8b"]
 [ext_resource type="PackedScene" uid="uid://pebggysscssr" path="res://src/components/builder/builder.tscn" id="1_sjmr0"]
+[ext_resource type="PackedScene" uid="uid://b68sqk3787m8m" path="res://src/components/building/building.tscn" id="2_cts34"]
+[ext_resource type="PackedScene" uid="uid://5nfekmvc45tk" path="res://src/components/unit/unit.tscn" id="2_osde3"]
+[ext_resource type="Resource" uid="uid://5ugpau5k357v" path="res://resources/resources/buildings/farm.tres" id="3_brlkd"]
 [ext_resource type="PackedScene" uid="uid://cxkurqrmxefm0" path="res://src/components/grid/grid.tscn" id="3_qmidl"]
+[ext_resource type="Resource" uid="uid://b8gben7m8bk1f" path="res://resources/resources/units/citizen.tres" id="3_wd2ea"]
+[ext_resource type="Resource" uid="uid://dcw4ejp70128k" path="res://resources/resources/buildings/house.tres" id="4_brlkd"]
 
 [node name="Game" type="Node2D"]
 
@@ -13,7 +18,38 @@ anchor_mode = 0
 
 [node name="Buildings" type="Node2D" parent="."]
 
+[node name="Building" parent="Buildings" instance=ExtResource("2_cts34")]
+position = Vector2(336, 224)
+building = ExtResource("3_brlkd")
+
+[node name="Building2" parent="Buildings" instance=ExtResource("2_cts34")]
+position = Vector2(240, 224)
+building = ExtResource("3_brlkd")
+
+[node name="Building3" parent="Buildings" instance=ExtResource("2_cts34")]
+position = Vector2(416, 288)
+building = ExtResource("4_brlkd")
+
+[node name="Building4" parent="Buildings" instance=ExtResource("2_cts34")]
+position = Vector2(160, 288)
+building = ExtResource("4_brlkd")
+
+[node name="Building5" parent="Buildings" instance=ExtResource("2_cts34")]
+position = Vector2(336, 352)
+building = ExtResource("3_brlkd")
+
+[node name="Building6" parent="Buildings" instance=ExtResource("2_cts34")]
+position = Vector2(240, 352)
+building = ExtResource("3_brlkd")
+
+[node name="Units" type="Node2D" parent="."]
+
+[node name="Unit" parent="Units" instance=ExtResource("2_osde3")]
+position = Vector2(306, 306)
+unit = ExtResource("3_wd2ea")
+
 [node name="Builder" parent="." node_paths=PackedStringArray("buildingContainer") instance=ExtResource("1_sjmr0")]
+visible = false
 buildingContainer = NodePath("../Buildings")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
