@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BuildingFunctionMiner" load_steps=5 format=3 uid="uid://byw3sne42y4dh"]
+[gd_resource type="Resource" script_class="BuildingFunctionMiner" format=3 uid="uid://byw3sne42y4dh"]
 
 [ext_resource type="Script" uid="uid://bdir30nq4d176" path="res://src/resource-definition/building-function/miner/miner-resource-definition.gd" id="1_upchf"]
 [ext_resource type="Resource" uid="uid://c250lub3odcso" path="res://resources/resources/town-resources/food.tres" id="2_3wrsy"]

@@ -1,8 +1,11 @@
+@tool
+
 extends Node2D
 
 class_name BuildingNode
 
 signal areaEnteredExited
+signal add_environment_obstacle(size: Vector2i, position: Vector2)
 
 const BuildingScene = preload('./building.tscn')
 
@@ -83,6 +86,9 @@ func canBePlaced() -> bool:
 func setMode(newMode: BuildingMode) -> void:
   mode = newMode
   updateColoring()
+
+  if mode == BuildingMode.placed:
+    add_environment_obstacle.emit(building.size, position)
 
 func updateColoring() -> void:
   match mode:

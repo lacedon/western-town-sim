@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BuildingFunctionStorage" load_steps=5 format=3 uid="uid://cdfprgm0qp4x6"]
+[gd_resource type="Resource" script_class="BuildingFunctionStorage" format=3 uid="uid://cdfprgm0qp4x6"]
 
 [ext_resource type="Script" uid="uid://dhsbh3t65qliu" path="res://src/resource-definition/building-function/storage/storage-resource-definition.gd" id="1_eqjcw"]
 [ext_resource type="Script" uid="uid://csidfvsw8sqd8" path="res://src/resource-definition/building-function/storage/storage.gd" id="2_2upxo"]

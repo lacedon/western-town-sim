@@ -22,4 +22,9 @@ collision_mask = 3
 shape = SubResource("CircleShape2D_tkng7")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-avoidance_enabled = true
+path_desired_distance = 2.0
+target_desired_distance = 2.0
+simplify_path = true
+radius = 2.0
+neighbor_distance = 100.0
+debug_enabled = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5466diq4clt8"]
+[gd_scene format=3 uid="uid://b5466diq4clt8"]
 
 [ext_resource type="PackedScene" uid="uid://6ujnvld0no1a" path="res://src/ui/game/game.tscn" id="1_eyx8b"]
 [ext_resource type="PackedScene" uid="uid://pebggysscssr" path="res://src/components/builder/builder.tscn" id="1_sjmr0"]
@@ -8,50 +8,53 @@
 [ext_resource type="PackedScene" uid="uid://cxkurqrmxefm0" path="res://src/components/grid/grid.tscn" id="3_qmidl"]
 [ext_resource type="Resource" uid="uid://b8gben7m8bk1f" path="res://resources/resources/units/citizen.tres" id="3_wd2ea"]
 [ext_resource type="Resource" uid="uid://dcw4ejp70128k" path="res://resources/resources/buildings/house.tres" id="4_brlkd"]
+[ext_resource type="PackedScene" uid="uid://c05ofa1jope1o" path="res://src/components/navigation/navigation.tscn" id="5_ia08b"]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" unique_id=1018720308]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1699835985]
 anchor_mode = 0
 
-[node name="Grid" parent="." instance=ExtResource("3_qmidl")]
+[node name="Navigation" parent="Camera2D" unique_id=201039558 instance=ExtResource("5_ia08b")]
 
-[node name="Buildings" type="Node2D" parent="."]
+[node name="Grid" parent="." unique_id=2004956744 instance=ExtResource("3_qmidl")]
 
-[node name="Building" parent="Buildings" instance=ExtResource("2_cts34")]
+[node name="Buildings" type="Node2D" parent="." unique_id=254553398]
+
+[node name="Building" parent="Buildings" unique_id=2014447708 instance=ExtResource("2_cts34")]
 position = Vector2(336, 224)
 building = ExtResource("3_brlkd")
 
-[node name="Building2" parent="Buildings" instance=ExtResource("2_cts34")]
+[node name="Building2" parent="Buildings" unique_id=1711132683 instance=ExtResource("2_cts34")]
 position = Vector2(240, 224)
 building = ExtResource("3_brlkd")
 
-[node name="Building3" parent="Buildings" instance=ExtResource("2_cts34")]
+[node name="Building3" parent="Buildings" unique_id=1689777698 instance=ExtResource("2_cts34")]
 position = Vector2(416, 288)
 building = ExtResource("4_brlkd")
 
-[node name="Building4" parent="Buildings" instance=ExtResource("2_cts34")]
+[node name="Building4" parent="Buildings" unique_id=759877871 instance=ExtResource("2_cts34")]
 position = Vector2(160, 288)
 building = ExtResource("4_brlkd")
 
-[node name="Building5" parent="Buildings" instance=ExtResource("2_cts34")]
+[node name="Building5" parent="Buildings" unique_id=809691596 instance=ExtResource("2_cts34")]
 position = Vector2(336, 352)
 building = ExtResource("3_brlkd")
 
-[node name="Building6" parent="Buildings" instance=ExtResource("2_cts34")]
+[node name="Building6" parent="Buildings" unique_id=668414985 instance=ExtResource("2_cts34")]
 position = Vector2(240, 352)
 building = ExtResource("3_brlkd")
 
-[node name="Units" type="Node2D" parent="."]
+[node name="Units" type="Node2D" parent="." unique_id=449497547]
 
-[node name="Unit" parent="Units" instance=ExtResource("2_osde3")]
+[node name="Unit" parent="Units" unique_id=1511295046 instance=ExtResource("2_osde3")]
 position = Vector2(306, 306)
 unit = ExtResource("3_wd2ea")
 
-[node name="Builder" parent="." node_paths=PackedStringArray("buildingContainer") instance=ExtResource("1_sjmr0")]
+[node name="Builder" parent="." unique_id=246145107 node_paths=PackedStringArray("buildingContainer") instance=ExtResource("1_sjmr0")]
 visible = false
 buildingContainer = NodePath("../Buildings")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1340560908]
 
-[node name="GameUI" parent="CanvasLayer" instance=ExtResource("1_eyx8b")]
+[node name="GameUI" parent="CanvasLayer" unique_id=47893454 instance=ExtResource("1_eyx8b")]

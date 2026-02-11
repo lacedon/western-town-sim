@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c05ofa1jope1o"]
+
+[ext_resource type="Script" uid="uid://b45xcnjhsxd8t" path="res://src/components/navigation/navigation.gd" id="1_ldmo7"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_hbphy"]
+
+[node name="Navigation" type="Node2D" unique_id=201039558]
+script = ExtResource("1_ldmo7")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=14557153]
+navigation_polygon = SubResource("NavigationPolygon_hbphy")

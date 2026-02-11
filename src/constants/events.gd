@@ -1,3 +1,5 @@
 const START_BUILDING = 'start_building'
 const UPDATE_RESOURCE = 'update_resource'
 const UPDATE_RESOURCE_MAX = 'update_resource_max'
+const ADD_ENVIRONMENT_OBSTACLE = 'add_environment_obstacle'
+const REMOVE_ENVIRONMENT_OBSTACLE = 'remove_environment_obstacle'
