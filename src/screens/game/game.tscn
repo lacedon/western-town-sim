@@ -58,7 +58,6 @@ position = Vector2(306, 306)
 unit = ExtResource("3_wd2ea")
 
 [node name="Builder" parent="." unique_id=246145107 node_paths=PackedStringArray("buildingContainer") instance=ExtResource("1_sjmr0")]
-visible = false
 buildingContainer = NodePath("../Buildings")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1340560908]
