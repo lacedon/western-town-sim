@@ -55,5 +55,5 @@ func move_to_target(delta: float) -> void:
   position = position.move_toward(next_path_position, unit.speed * delta)
 
   if navigation_agent.is_navigation_finished():
-    position = _target_position
+    # position = _target_position
     set_random_target_within_radius()

@@ -2,10 +2,14 @@
 
 [ext_resource type="Script" uid="uid://b45xcnjhsxd8t" path="res://src/components/navigation/navigation.gd" id="1_ldmo7"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_hbphy"]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ldmo7"]
+cell_size = 4.0
+agent_radius = 1.0
 
 [node name="Navigation" type="Node2D" unique_id=201039558]
 script = ExtResource("1_ldmo7")
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=14557153]
-navigation_polygon = SubResource("NavigationPolygon_hbphy")
+[node name="DebugPolygons" type="Node2D" parent="." unique_id=1106564801]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1894620850]
+navigation_polygon = SubResource("NavigationPolygon_ldmo7")

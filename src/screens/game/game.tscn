@@ -15,7 +15,7 @@
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1699835985]
 anchor_mode = 0
 
-[node name="Navigation" parent="Camera2D" unique_id=201039558 instance=ExtResource("5_ia08b")]
+[node name="Navigation" parent="." unique_id=201039558 instance=ExtResource("5_ia08b")]
 
 [node name="Grid" parent="." unique_id=2004956744 instance=ExtResource("3_qmidl")]
 
@@ -23,26 +23,32 @@ anchor_mode = 0
 
 [node name="Building" parent="Buildings" unique_id=2014447708 instance=ExtResource("2_cts34")]
 position = Vector2(336, 224)
+mode = 1
 building = ExtResource("3_brlkd")
 
 [node name="Building2" parent="Buildings" unique_id=1711132683 instance=ExtResource("2_cts34")]
 position = Vector2(240, 224)
+mode = 1
 building = ExtResource("3_brlkd")
 
 [node name="Building3" parent="Buildings" unique_id=1689777698 instance=ExtResource("2_cts34")]
 position = Vector2(416, 288)
+mode = 1
 building = ExtResource("4_brlkd")
 
 [node name="Building4" parent="Buildings" unique_id=759877871 instance=ExtResource("2_cts34")]
 position = Vector2(160, 288)
+mode = 1
 building = ExtResource("4_brlkd")
 
 [node name="Building5" parent="Buildings" unique_id=809691596 instance=ExtResource("2_cts34")]
 position = Vector2(336, 352)
+mode = 1
 building = ExtResource("3_brlkd")
 
 [node name="Building6" parent="Buildings" unique_id=668414985 instance=ExtResource("2_cts34")]
 position = Vector2(240, 352)
+mode = 1
 building = ExtResource("3_brlkd")
 
 [node name="Units" type="Node2D" parent="." unique_id=449497547]

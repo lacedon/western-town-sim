@@ -1,13 +1,12 @@
-@tool
-
 extends Node2D
 
 class_name BuildingNode
 
 signal areaEnteredExited
-signal add_environment_obstacle(size: Vector2i, position: Vector2)
+signal add_environment_obstacle(position: Vector2, size: Vector2i)
 
 const BuildingScene = preload('./building.tscn')
+const events = preload('res://src/constants/events.gd')
 
 enum BuildingMode {
   planing,
@@ -41,12 +40,19 @@ static func create(_building: RBuilding, _mode: = BuildingMode.planing, _positio
 func _ready() -> void:
   _initBuilding()
 
+  EventEmitter.addEmitter(events.ADD_ENVIRONMENT_OBSTACLE, self)
+
+  if mode == BuildingMode.placed:
+    emitObstacleAddedEvent()
+
   area2d.connect(area2d.area_entered.get_name(), _emitAreaEnteredExited)
   area2d.connect(area2d.area_exited.get_name(), _emitAreaEnteredExited)
 
 func _exit_tree() -> void:
   area2d.disconnect(area2d.area_entered.get_name(), _emitAreaEnteredExited)
   area2d.disconnect(area2d.area_exited.get_name(), _emitAreaEnteredExited)
+
+  EventEmitter.removeEmitter(events.ADD_ENVIRONMENT_OBSTACLE, self)
 
 func _initBuilding() -> void:
   if !building: return _resetBuilding()
@@ -88,7 +94,7 @@ func setMode(newMode: BuildingMode) -> void:
   updateColoring()
 
   if mode == BuildingMode.placed:
-    add_environment_obstacle.emit(building.size, position)
+    emitObstacleAddedEvent()
 
 func updateColoring() -> void:
   match mode:
@@ -96,3 +102,10 @@ func updateColoring() -> void:
       coloringBlock.color = ModeColors.planingSuccess if canBePlaced() else ModeColors.planingError
     _:
       coloringBlock.color = ModeColors.normal
+
+func emitObstacleAddedEvent() -> void:
+  var sizeInPixels: Vector2 = building.size * GameConfig.tileSize
+  add_environment_obstacle.emit(
+    position - Vector2(float(sizeInPixels.x / 2), float(sizeInPixels.y / 2)),
+    sizeInPixels
+  )
