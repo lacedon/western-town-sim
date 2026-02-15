@@ -43,7 +43,7 @@ func _ready() -> void:
   EventEmitter.addEmitter(events.ADD_ENVIRONMENT_OBSTACLE, self)
 
   if mode == BuildingMode.placed:
-    emitObstacleAddedEvent()
+    handleModeSetPlaced()
 
   area2d.connect(area2d.area_entered.get_name(), _emitAreaEnteredExited)
   area2d.connect(area2d.area_exited.get_name(), _emitAreaEnteredExited)
@@ -94,7 +94,7 @@ func setMode(newMode: BuildingMode) -> void:
   updateColoring()
 
   if mode == BuildingMode.placed:
-    emitObstacleAddedEvent()
+    handleModeSetPlaced()
 
 func updateColoring() -> void:
   match mode:
@@ -109,3 +109,23 @@ func emitObstacleAddedEvent() -> void:
     position - Vector2(float(sizeInPixels.x / 2), float(sizeInPixels.y / 2)),
     sizeInPixels
   )
+
+func handleModeSetPlaced() -> void:
+  emitObstacleAddedEvent()
+  createEntrance()
+
+func createEntrance() -> void:
+  var buildingSizePixels: Vector2 = building.size * GameConfig.tileSize
+  var topLeftEdgePosition: Vector2 = Vector2(-float(buildingSizePixels.x / 2), -float(buildingSizePixels.y / 2))
+
+  for entrance in building.entrances:
+    var entranceNode: Polygon2D = Polygon2D.new()
+    entranceNode.color = Color(0, 0.75, 0.95, 0.25)
+    entranceNode.polygon = PackedVector2Array([
+      Vector2(0, 0),
+      Vector2(GameConfig.tileSize.x, 0),
+      Vector2(GameConfig.tileSize.x, GameConfig.tileSize.y),
+      Vector2(0, GameConfig.tileSize.y)
+    ])
+    entranceNode.position = topLeftEdgePosition + Vector2(entrance.x * GameConfig.tileSize.x, entrance.y * GameConfig.tileSize.y)
+    add_child(entranceNode)

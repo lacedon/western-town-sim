@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RBuilding" load_steps=5 format=3 uid="uid://c75b544krh5uk"]
+[gd_resource type="Resource" script_class="RBuilding" format=3 uid="uid://c75b544krh5uk"]
 
 [ext_resource type="Script" uid="uid://bul07m0x4lddb" path="res://src/resource-definition/building-function/building-function.gd" id="1_esnbw"]
 [ext_resource type="Resource" uid="uid://cdfprgm0qp4x6" path="res://resources/resources/building-functions/food-storage.tres" id="2_51d4y"]
@@ -10,4 +10,5 @@ script = ExtResource("2_rvuly")
 size = Vector2i(2, 2)
 texture = ExtResource("4_lqhlc")
 functions = Array[ExtResource("1_esnbw")]([ExtResource("2_51d4y")])
+entrances = Array[Vector2]([Vector2(0, -1), Vector2(1, 2)])
 metadata/_custom_type_script = "uid://dpevskfowsdkc"

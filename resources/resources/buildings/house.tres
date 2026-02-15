@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RBuilding" load_steps=6 format=3 uid="uid://dcw4ejp70128k"]
+[gd_resource type="Resource" script_class="RBuilding" format=3 uid="uid://dcw4ejp70128k"]
 
 [ext_resource type="Script" uid="uid://bul07m0x4lddb" path="res://src/resource-definition/building-function/building-function.gd" id="1_725ld"]
 [ext_resource type="Script" uid="uid://dpevskfowsdkc" path="res://src/resource-definition/building.gd" id="2_bnlry"]
@@ -12,4 +12,5 @@ name = "House"
 size = Vector2i(2, 2)
 texture = ExtResource("3_bnlry")
 functions = Array[ExtResource("1_725ld")]([ExtResource("2_rde58"), ExtResource("3_ba7ex")])
+entrances = Array[Vector2]([Vector2(0, -1), Vector2(1, 2)])
 metadata/_custom_type_script = "uid://dpevskfowsdkc"

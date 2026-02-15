@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RBuilding" load_steps=5 format=3 uid="uid://5ugpau5k357v"]
+[gd_resource type="Resource" script_class="RBuilding" format=3 uid="uid://5ugpau5k357v"]
 
 [ext_resource type="Script" uid="uid://dpevskfowsdkc" path="res://src/resource-definition/building.gd" id="1_f5vc7"]
 [ext_resource type="Script" uid="uid://bul07m0x4lddb" path="res://src/resource-definition/building-function/building-function.gd" id="1_qsk0w"]
@@ -11,4 +11,5 @@ name = "Farm"
 size = Vector2i(3, 2)
 texture = ExtResource("2_f546y")
 functions = Array[ExtResource("1_qsk0w")]([ExtResource("2_0lkvr")])
+entrances = Array[Vector2]([Vector2(0, -1), Vector2(2, 2)])
 metadata/_custom_type_script = "uid://dpevskfowsdkc"
