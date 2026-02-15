@@ -38,6 +38,12 @@ static func create(_building: RBuilding, _mode: = BuildingMode.planing, _positio
   return createdBuilding
 
 func _ready() -> void:
+  if !self.visible:
+    setMode(BuildingMode.planing)
+    area2d.monitorable = false
+    area2d.monitoring = false
+    return
+
   _initBuilding()
 
   EventEmitter.addEmitter(events.ADD_ENVIRONMENT_OBSTACLE, self)

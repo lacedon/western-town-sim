@@ -22,31 +22,37 @@ anchor_mode = 0
 [node name="Buildings" type="Node2D" parent="." unique_id=254553398]
 
 [node name="Building" parent="Buildings" unique_id=2014447708 instance=ExtResource("2_cts34")]
+visible = false
 position = Vector2(336, 224)
 mode = 1
 building = ExtResource("3_brlkd")
 
 [node name="Building2" parent="Buildings" unique_id=1711132683 instance=ExtResource("2_cts34")]
+visible = false
 position = Vector2(240, 224)
 mode = 1
 building = ExtResource("3_brlkd")
 
 [node name="Building3" parent="Buildings" unique_id=1689777698 instance=ExtResource("2_cts34")]
+visible = false
 position = Vector2(416, 288)
 mode = 1
 building = ExtResource("4_brlkd")
 
 [node name="Building4" parent="Buildings" unique_id=759877871 instance=ExtResource("2_cts34")]
+visible = false
 position = Vector2(160, 288)
 mode = 1
 building = ExtResource("4_brlkd")
 
 [node name="Building5" parent="Buildings" unique_id=809691596 instance=ExtResource("2_cts34")]
+visible = false
 position = Vector2(336, 352)
 mode = 1
 building = ExtResource("3_brlkd")
 
 [node name="Building6" parent="Buildings" unique_id=668414985 instance=ExtResource("2_cts34")]
+visible = false
 position = Vector2(240, 352)
 mode = 1
 building = ExtResource("3_brlkd")
@@ -54,6 +60,7 @@ building = ExtResource("3_brlkd")
 [node name="Units" type="Node2D" parent="." unique_id=449497547]
 
 [node name="Unit" parent="Units" unique_id=1511295046 instance=ExtResource("2_osde3")]
+visible = false
 position = Vector2(306, 306)
 unit = ExtResource("3_wd2ea")
 

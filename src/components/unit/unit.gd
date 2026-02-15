@@ -14,6 +14,7 @@ var _target_position: Vector2 = Vector2.ZERO
 var _is_moving: bool = false
 
 func _ready() -> void:
+  if !self.visible: return
   if !unit: return
 
   sprite.texture = unit.texture
