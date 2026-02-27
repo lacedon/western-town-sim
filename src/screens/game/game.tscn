@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://b8gben7m8bk1f" path="res://resources/resources/units/citizen.tres" id="3_wd2ea"]
 [ext_resource type="Resource" uid="uid://dcw4ejp70128k" path="res://resources/resources/buildings/house.tres" id="4_brlkd"]
 [ext_resource type="PackedScene" uid="uid://c05ofa1jope1o" path="res://src/components/navigation/navigation.tscn" id="5_ia08b"]
+[ext_resource type="PackedScene" uid="uid://qgkmhmaf33px" path="res://src/components/day-timer/day-timer.tscn" id="9_i545r"]
 
 [node name="Game" type="Node2D" unique_id=1018720308]
 
@@ -66,6 +67,8 @@ unit = ExtResource("3_wd2ea")
 
 [node name="Builder" parent="." unique_id=246145107 node_paths=PackedStringArray("buildingContainer") instance=ExtResource("1_sjmr0")]
 buildingContainer = NodePath("../Buildings")
+
+[node name="DayTimer" parent="." unique_id=352876956 instance=ExtResource("9_i545r")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1340560908]
 

@@ -47,6 +47,7 @@ func _ready() -> void:
   _initBuilding()
 
   EventEmitter.addEmitter(events.ADD_ENVIRONMENT_OBSTACLE, self)
+  EventEmitter.addListener(events.START_OF_DAY, _handle_start_of_day)
 
   if mode == BuildingMode.placed:
     handleModeSetPlaced()
@@ -59,11 +60,13 @@ func _exit_tree() -> void:
   area2d.disconnect(area2d.area_exited.get_name(), _emitAreaEnteredExited)
 
   EventEmitter.removeEmitter(events.ADD_ENVIRONMENT_OBSTACLE, self)
+  EventEmitter.removeListener(events.START_OF_DAY, _handle_start_of_day)
+
 
 func _initBuilding() -> void:
   if !building: return _resetBuilding()
 
-  var buildingSizeInPixels: Vector2i = building.size * GameConfig.tileSize
+  var buildingSizeInPixels: Vector2i = building.size * GameConfig.tile_size
   var buildingCenteringPosition: Vector2 = -buildingSizeInPixels / 2
 
   sprite.texture = building.texture
@@ -110,7 +113,7 @@ func updateColoring() -> void:
       coloringBlock.color = ModeColors.normal
 
 func emitObstacleAddedEvent() -> void:
-  var sizeInPixels: Vector2 = building.size * GameConfig.tileSize
+  var sizeInPixels: Vector2 = building.size * GameConfig.tile_size
   add_environment_obstacle.emit(
     position - Vector2(float(sizeInPixels.x / 2), float(sizeInPixels.y / 2)),
     sizeInPixels
@@ -121,7 +124,7 @@ func handleModeSetPlaced() -> void:
   createEntrance()
 
 func createEntrance() -> void:
-  var buildingSizePixels: Vector2 = building.size * GameConfig.tileSize
+  var buildingSizePixels: Vector2 = building.size * GameConfig.tile_size
   var topLeftEdgePosition: Vector2 = Vector2(-float(buildingSizePixels.x / 2), -float(buildingSizePixels.y / 2))
 
   for entrance in building.entrances:
@@ -129,9 +132,13 @@ func createEntrance() -> void:
     entranceNode.color = Color(0, 0.75, 0.95, 0.25)
     entranceNode.polygon = PackedVector2Array([
       Vector2(0, 0),
-      Vector2(GameConfig.tileSize.x, 0),
-      Vector2(GameConfig.tileSize.x, GameConfig.tileSize.y),
-      Vector2(0, GameConfig.tileSize.y)
+      Vector2(GameConfig.tile_size.x, 0),
+      Vector2(GameConfig.tile_size.x, GameConfig.tile_size.y),
+      Vector2(0, GameConfig.tile_size.y)
     ])
-    entranceNode.position = topLeftEdgePosition + Vector2(entrance.x * GameConfig.tileSize.x, entrance.y * GameConfig.tileSize.y)
+    entranceNode.position = topLeftEdgePosition + Vector2(entrance.x * GameConfig.tile_size.x, entrance.y * GameConfig.tile_size.y)
     add_child(entranceNode)
+
+func _handle_start_of_day() -> void:
+  if self.building && self.mode == BuildingMode.placed:
+    self.building.onDayChange()

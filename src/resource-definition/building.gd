@@ -47,3 +47,7 @@ func onBuildingPlaced() -> void:
 func onBuildingDestroyed() -> void:
   for function in functions:
     function.onBuildingDestroyed(self)
+
+func onDayChange() -> void:
+  for function in functions:
+    function.onDayChange(self)

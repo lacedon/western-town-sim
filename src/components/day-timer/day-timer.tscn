@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://qgkmhmaf33px"]
+
+[ext_resource type="Script" uid="uid://bgu40ak03061x" path="res://src/components/day-timer/day_timer.gd" id="1_xkuhf"]
+
+[node name="DayTimer" type="Node2D" unique_id=352876956]
+script = ExtResource("1_xkuhf")
+
+[node name="Timer" type="Timer" parent="." unique_id=1867699498]
+
+[connection signal="timeout" from="Timer" to="." method="emit_start_of_day"]

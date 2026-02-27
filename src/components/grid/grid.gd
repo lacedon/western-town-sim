@@ -14,6 +14,6 @@ func _createLine(index: int, isHorizontal: bool) -> Line2D:
     var line = Line2D.new()
     line.width = lineWidth
     line.default_color = color
-    var coordinate = index * (GameConfig.tileSize.x if isHorizontal else GameConfig.tileSize.y)
+    var coordinate = index * (GameConfig.tile_size.x if isHorizontal else GameConfig.tile_size.y)
     line.points = [Vector2(coordinate, 0), Vector2(coordinate, lineSize)] if isHorizontal else [Vector2(0, coordinate), Vector2(lineSize, coordinate)]
     return line

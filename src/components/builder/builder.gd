@@ -69,7 +69,7 @@ func _input(event: InputEvent) -> void:
         stopPlacingBuilding()
 
 func _parseCoordinate(eventPosition: Vector2, coordinateIndex: int, shouldReturnPixels = true) -> int:
-  var tileSize: int = GameConfig.tileSize[coordinateIndex]
+  var tileSize: int = GameConfig.tile_size[coordinateIndex]
   var buildingSize: int = buildingNode.building.size[coordinateIndex]
   var tileCoordinate: float = (
     floor(eventPosition[coordinateIndex] / tileSize) +
@@ -85,8 +85,8 @@ func _parseCoordinates(eventPosition: Vector2, shouldReturnPixels = true) -> Vec
 
 func tileCoordinatesToPixels(tileCoordinates: Vector2) -> Vector2:
   return Vector2(
-    (tileCoordinates.x + (0.5 if isOdd.isOdd(buildingNode.building.size.x) else 0.))* GameConfig.tileSize.x,
-    (tileCoordinates.y + (0.5 if isOdd.isOdd(buildingNode.building.size.y) else 0.))* GameConfig.tileSize.y
+    (tileCoordinates.x + (0.5 if isOdd.isOdd(buildingNode.building.size.x) else 0.))* GameConfig.tile_size.x,
+    (tileCoordinates.y + (0.5 if isOdd.isOdd(buildingNode.building.size.y) else 0.))* GameConfig.tile_size.y
   )
 
 func _updateBuildingColoring() -> void:

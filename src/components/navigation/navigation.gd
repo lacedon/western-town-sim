@@ -81,9 +81,9 @@ func rebake_navigation() -> void:
   # so the obstructions outlines have something to "cut" into.
   source_geometry.add_traversable_outline(PackedVector2Array([
     Vector2(0, 0),
-    Vector2(0, GameConfig.startNavigationRegionSize.y),
-    Vector2(GameConfig.startNavigationRegionSize.x, GameConfig.startNavigationRegionSize.y),
-    Vector2(GameConfig.startNavigationRegionSize.x, 0)
+    Vector2(0, GameConfig.start_navigation_region_size.y),
+    Vector2(GameConfig.start_navigation_region_size.x, GameConfig.start_navigation_region_size.y),
+    Vector2(GameConfig.start_navigation_region_size.x, 0)
   ]))
 
   for obstacle in _obstacles:
