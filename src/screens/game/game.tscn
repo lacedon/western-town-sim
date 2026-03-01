@@ -3,12 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://6ujnvld0no1a" path="res://src/ui/game/game.tscn" id="1_eyx8b"]
 [ext_resource type="PackedScene" uid="uid://pebggysscssr" path="res://src/components/builder/builder.tscn" id="1_sjmr0"]
 [ext_resource type="PackedScene" uid="uid://b68sqk3787m8m" path="res://src/components/building/building.tscn" id="2_cts34"]
-[ext_resource type="PackedScene" uid="uid://5nfekmvc45tk" path="res://src/components/unit/unit.tscn" id="2_osde3"]
 [ext_resource type="Resource" uid="uid://5ugpau5k357v" path="res://resources/resources/buildings/farm.tres" id="3_brlkd"]
 [ext_resource type="PackedScene" uid="uid://cxkurqrmxefm0" path="res://src/components/grid/grid.tscn" id="3_qmidl"]
-[ext_resource type="Resource" uid="uid://b8gben7m8bk1f" path="res://resources/resources/units/citizen.tres" id="3_wd2ea"]
 [ext_resource type="Resource" uid="uid://dcw4ejp70128k" path="res://resources/resources/buildings/house.tres" id="4_brlkd"]
 [ext_resource type="PackedScene" uid="uid://c05ofa1jope1o" path="res://src/components/navigation/navigation.tscn" id="5_ia08b"]
+[ext_resource type="PackedScene" uid="uid://bq1lkfyr5ei20" path="res://src/components/spawner/spawner.tscn" id="6_ia08b"]
 [ext_resource type="PackedScene" uid="uid://qgkmhmaf33px" path="res://src/components/day-timer/day-timer.tscn" id="9_i545r"]
 
 [node name="Game" type="Node2D" unique_id=1018720308]
@@ -58,12 +57,7 @@ position = Vector2(240, 352)
 mode = 1
 building = ExtResource("3_brlkd")
 
-[node name="Units" type="Node2D" parent="." unique_id=449497547]
-
-[node name="Unit" parent="Units" unique_id=1511295046 instance=ExtResource("2_osde3")]
-visible = false
-position = Vector2(306, 306)
-unit = ExtResource("3_wd2ea")
+[node name="Spawner" parent="." unique_id=1107104501 instance=ExtResource("6_ia08b")]
 
 [node name="Builder" parent="." unique_id=246145107 node_paths=PackedStringArray("buildingContainer") instance=ExtResource("1_sjmr0")]
 buildingContainer = NodePath("../Buildings")

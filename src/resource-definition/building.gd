@@ -48,6 +48,6 @@ func onBuildingDestroyed() -> void:
   for function in functions:
     function.onBuildingDestroyed(self)
 
-func onDayChange() -> void:
+func onDayChange(position: Vector2) -> void:
   for function in functions:
-    function.onDayChange(self)
+    function.onDayChange(self, position)

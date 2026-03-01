@@ -1,30 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://5nfekmvc45tk"]
+[gd_scene format=3 uid="uid://5nfekmvc45tk"]
 
 [ext_resource type="Script" uid="uid://dxa8xbgq5jfph" path="res://src/components/unit/unit.gd" id="1_tkng7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tkng7"]
 radius = 8.0
 
-[node name="Unit" type="Node2D"]
+[node name="Unit" type="Node2D" unique_id=380871794]
 script = ExtResource("1_tkng7")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=782270880]
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1426964228]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1513233708]
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=980957034]
 shape = SubResource("CircleShape2D_tkng7")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=330073188]
 path_desired_distance = 2.0
 target_desired_distance = 2.0
 simplify_path = true
+avoidance_enabled = true
 radius = 2.0
 neighbor_distance = 100.0
-debug_enabled = true
