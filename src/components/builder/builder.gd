@@ -13,11 +13,11 @@ var _isPlacingStarted: bool = false
 var _placingStartCoordinates: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
-  EventEmitter.addListener(eventConstants.START_BUILDING, startPlacingBuilding)
+  EventEmitter.add_listener(eventConstants.START_BUILDING, startPlacingBuilding)
   buildingNode.connect(buildingNode.areaEnteredExited.get_name(), _updateBuildingColoring)
 
 func _exit_tree() -> void:
-  EventEmitter.removeListener(eventConstants.START_BUILDING, startPlacingBuilding)
+  EventEmitter.remove_listener(eventConstants.START_BUILDING, startPlacingBuilding)
   buildingNode.disconnect(buildingNode.areaEnteredExited.get_name(), _updateBuildingColoring)
 
 func _input(event: InputEvent) -> void:

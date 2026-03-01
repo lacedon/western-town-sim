@@ -12,10 +12,10 @@ func _ready():
   timer.wait_time = GameConfig.day_length_seconds
   timer.start()
 
-  EventEmitter.addEmitter(events.START_OF_DAY, self)
+  EventEmitter.add_emitter(events.START_OF_DAY, self)
 
 func _exit_tree() -> void:
-  EventEmitter.removeEmitter(events.START_OF_DAY, self)
+  EventEmitter.remove_emitter(events.START_OF_DAY, self)
 
 func emit_start_of_day() -> void:
   emit_signal(events.START_OF_DAY)

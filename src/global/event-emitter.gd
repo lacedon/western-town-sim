@@ -1,45 +1,55 @@
 extends Node
 
+signal event(signal_name: String, data: Variant)
+
+var event_name = event.get_name()
+
 var _emitters: Dictionary = {}
 var _listeners: Dictionary = {}
 
-func addEmitter(signalName: String, emitter: Object) -> void:
-	if not _emitters.has(signalName): _emitters[signalName] = []
+func _ready():
+	add_emitter(self.event_name, self)
 
-	_emitters[signalName].append(emitter)
+func emit_event(signal_name: String, data: Variant = null) -> void:
+	self.event.emit(signal_name, data)
 
-	if not _listeners.has(signalName): return
-	for listenerMethod in _listeners[signalName]:
-		emitter.connect(signalName, listenerMethod)
+func add_emitter(signal_name: String, emitter: Object) -> void:
+	if not _emitters.has(signal_name): _emitters[signal_name] = []
 
-func removeEmitter(signalName: String, emitter: Object) -> void:
-	if not _emitters.has(signalName): return
+	_emitters[signal_name].append(emitter)
 
-	var emitterIndex: int = _emitters[signalName].find(emitter)
-	if emitterIndex >= 0: _emitters[signalName].pop_at(emitterIndex)
+	if not _listeners.has(signal_name): return
+	for listener_method in _listeners[signal_name]:
+		emitter.connect(signal_name, listener_method)
 
-	if !_listeners.has(signalName): return
+func remove_emitter(signal_name: String, emitter: Object) -> void:
+	if not _emitters.has(signal_name): return
 
-	for listenerMethod in _listeners[signalName]:
-		if emitter.is_connected(signalName, listenerMethod):
-			emitter.disconnect(signalName, listenerMethod)
+	var emitter_index: int = _emitters[signal_name].find(emitter)
+	if emitter_index >= 0: _emitters[signal_name].pop_at(emitter_index)
 
-func addListener(signalName: String, method: Callable) -> void:
-	if not _listeners.has(signalName): _listeners[signalName] = []
-	_listeners[signalName].append(method)
+	if !_listeners.has(signal_name): return
 
-	if not _emitters.has(signalName): return
-	for emitter in _emitters[signalName]:
-		emitter.connect(signalName, method)
+	for listener_method in _listeners[signal_name]:
+		if emitter.is_connected(signal_name, listener_method):
+			emitter.disconnect(signal_name, listener_method)
 
-func removeListener(signalName: String, method: Callable) -> void:
-	if not _listeners.has(signalName): return
+func add_listener(signal_name: String, method: Callable) -> void:
+	if not _listeners.has(signal_name): _listeners[signal_name] = []
+	_listeners[signal_name].append(method)
 
-	var listenerIndex: int = _listeners[signalName].find(method)
-	if listenerIndex >= 0: _listeners[signalName].pop_at(listenerIndex)
+	if not _emitters.has(signal_name): return
+	for emitter in _emitters[signal_name]:
+		emitter.connect(signal_name, method)
 
-	if not _emitters.has(signalName): return
+func remove_listener(signal_name: String, method: Callable) -> void:
+	if not _listeners.has(signal_name): return
 
-	for emitter in _emitters[signalName]:
-		if emitter.is_connected(signalName, method):
-			emitter.disconnect(signalName, method)
+	var listenerIndex: int = _listeners[signal_name].find(method)
+	if listenerIndex >= 0: _listeners[signal_name].pop_at(listenerIndex)
+
+	if not _emitters.has(signal_name): return
+
+	for emitter in _emitters[signal_name]:
+		if emitter.is_connected(signal_name, method):
+			emitter.disconnect(signal_name, method)

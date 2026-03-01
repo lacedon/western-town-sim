@@ -46,8 +46,8 @@ func _ready() -> void:
 
   _initBuilding()
 
-  EventEmitter.addEmitter(events.ADD_ENVIRONMENT_OBSTACLE, self)
-  EventEmitter.addListener(events.START_OF_DAY, _handle_start_of_day)
+  EventEmitter.add_emitter(events.ADD_ENVIRONMENT_OBSTACLE, self)
+  EventEmitter.add_listener(events.START_OF_DAY, _handle_start_of_day)
 
   if mode == BuildingMode.placed:
     handleModeSetPlaced()
@@ -59,8 +59,8 @@ func _exit_tree() -> void:
   area2d.disconnect(area2d.area_entered.get_name(), _emitAreaEnteredExited)
   area2d.disconnect(area2d.area_exited.get_name(), _emitAreaEnteredExited)
 
-  EventEmitter.removeEmitter(events.ADD_ENVIRONMENT_OBSTACLE, self)
-  EventEmitter.removeListener(events.START_OF_DAY, _handle_start_of_day)
+  EventEmitter.remove_emitter(events.ADD_ENVIRONMENT_OBSTACLE, self)
+  EventEmitter.remove_listener(events.START_OF_DAY, _handle_start_of_day)
 
 
 func _initBuilding() -> void:

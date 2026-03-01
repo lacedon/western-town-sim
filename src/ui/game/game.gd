@@ -8,10 +8,10 @@ const buildingFoodStorage = preload("res://resources/resources/buildings/food-st
 signal start_building(name: RBuilding)
 
 func _ready() -> void:
-  EventEmitter.addEmitter(eventConstants.START_BUILDING, self)
+  EventEmitter.add_emitter(eventConstants.START_BUILDING, self)
 
 func _exit_tree() -> void:
-  EventEmitter.removeEmitter(eventConstants.START_BUILDING, self)
+  EventEmitter.remove_emitter(eventConstants.START_BUILDING, self)
 
 func startBuildingFarm():
   self.emit_signal(start_building.get_name(), buildingFarm)

@@ -18,8 +18,8 @@ var should_rebake: bool = false
 var is_baking_in_process: bool = false
 
 func _ready() -> void:
-  EventEmitter.addListener(events.ADD_ENVIRONMENT_OBSTACLE, self._on_add_environment_obstacle)
-  EventEmitter.addListener(events.REMOVE_ENVIRONMENT_OBSTACLE, self._on_remove_environment_obstacle)
+  EventEmitter.add_listener(events.ADD_ENVIRONMENT_OBSTACLE, self._on_add_environment_obstacle)
+  EventEmitter.add_listener(events.REMOVE_ENVIRONMENT_OBSTACLE, self._on_remove_environment_obstacle)
 
   map_rid = _create_map()
   # region_rid = _create_region(map_rid)
@@ -31,8 +31,8 @@ func _ready() -> void:
   parse_source_geometry.call_deferred()
 
 func _exit_tree() -> void:
-  EventEmitter.removeListener(events.ADD_ENVIRONMENT_OBSTACLE, self._on_add_environment_obstacle)
-  EventEmitter.removeListener(events.REMOVE_ENVIRONMENT_OBSTACLE, self._on_remove_environment_obstacle)
+  EventEmitter.remove_listener(events.ADD_ENVIRONMENT_OBSTACLE, self._on_add_environment_obstacle)
+  EventEmitter.remove_listener(events.REMOVE_ENVIRONMENT_OBSTACLE, self._on_remove_environment_obstacle)
 
 func _create_map() -> RID:
   return get_world_2d().get_navigation_map()
