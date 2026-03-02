@@ -6,4 +6,5 @@
 script = ExtResource("1_pwcm7")
 name = "Max Person Capacity"
 should_show_in_ui = true
+is_reverted = true
 metadata/_custom_type_script = "uid://cetkss1stntvm"

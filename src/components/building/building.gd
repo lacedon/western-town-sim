@@ -143,4 +143,4 @@ func createEntrance() -> void:
 
 func _handle_start_of_day() -> void:
   if self.building && self.mode == BuildingMode.placed:
-    self.building.onDayChange((self.position + self.get_top_left_edge_position()) / Vector2(GameConfig.tile_size))
+    self.building.on_day_change((self.position + self.get_top_left_edge_position()) / Vector2(GameConfig.tile_size))
