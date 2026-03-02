@@ -8,13 +8,7 @@ const personCapacityResource = preload("res://resources/resources/town-resources
 @export var capacity: int = 6
 
 func onBuildingPlaced(_building: RBuilding) -> void:
-  EventEmitter.emit_event(eventConstants.UPDATE_RESOURCE_MAX, {
-    resource_name = personCapacityResource.name,
-    value_change = capacity
-  })
+  GameResourceManager.update_max_resource(personCapacityResource.name, capacity)
 
 func onBuildingDestroyed(_building: RBuilding) -> void:
-  EventEmitter.emit_event(eventConstants.UPDATE_RESOURCE_MAX, {
-    resource_name = personCapacityResource.name,
-    value_change = -capacity
-  })
+  GameResourceManager.update_max_resource(personCapacityResource.name, -capacity)

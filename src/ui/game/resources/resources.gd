@@ -12,25 +12,21 @@ const GameUIResource = preload("./resource.gd")
 ]
 
 func _ready() -> void:
-  EventEmitter.add_listener(EventEmitter.event_name, updateResource)
-  EventEmitter.add_listener(EventEmitter.event_name, updateMaxResource)
+  GameResourceManager.connect(GameResourceManager.resource_updated.get_name(), self.update_resource)
+  GameResourceManager.connect(GameResourceManager.max_resource_updated.get_name(), self.update_max_resource)
 
 func _exit_tree() -> void:
-  EventEmitter.remove_listener(EventEmitter.event_name, updateResource)
-  EventEmitter.remove_listener(EventEmitter.event_name, updateMaxResource)
+  GameResourceManager.disconnect(GameResourceManager.resource_updated.get_name(), self.update_resource)
+  GameResourceManager.disconnect(GameResourceManager.max_resource_updated.get_name(), self.update_max_resource)
 
-func updateResource(event_name: String, payload: Dictionary) -> void:
-  if event_name != eventConstants.UPDATE_RESOURCE: return
-
+func update_resource(resource: TownResource, _diff: float) -> void:
   for resourceNode in resourceNodes:
-    if resourceNode.resource.name == payload.resource_name:
-      resourceNode.changeValue(payload.value_change)
+    if resourceNode.resource.name == resource.name:
+      resourceNode.set_value(floor(resource.value))
       return
 
-func updateMaxResource(event_name: String, payload: Dictionary) -> void:
-  if event_name != eventConstants.UPDATE_RESOURCE_MAX: return
-
+func update_max_resource(resource: TownResource, _diff: float) -> void:
   for resourceNode in resourceNodes:
-    if resourceNode.resource.name == payload.resource_name:
-      resourceNode.changeMaxValue(payload.value_change)
+    if resourceNode.resource.name == resource.name:
+      resourceNode.set_max_value(floor(resource.max_value))
       return

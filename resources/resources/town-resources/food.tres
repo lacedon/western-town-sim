@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="TownResource" load_steps=2 format=3 uid="uid://c250lub3odcso"]
+[gd_resource type="Resource" script_class="TownResource" format=3 uid="uid://c250lub3odcso"]
 
 [ext_resource type="Script" uid="uid://cetkss1stntvm" path="res://src/resource-definition/town-resource.gd" id="1_3q81w"]
 
 [resource]
 script = ExtResource("1_3q81w")
 name = "Food"
-shouldShowInUI = true
+should_show_in_ui = true
 metadata/_custom_type_script = "uid://cetkss1stntvm"

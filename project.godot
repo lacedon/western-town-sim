@@ -23,6 +23,7 @@ config/icon="res://icon.svg"
 
 GameConfig="*res://src/global/game-config.gd"
 EventEmitter="*res://src/global/event-emitter.gd"
+GameResourceManager="*uid://crlnlpme8vvlg"
 
 [layer_names]
 

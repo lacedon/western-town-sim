@@ -15,19 +15,17 @@ extends PanelContainer
 func _ready() -> void:
   _updateView()
 
-func changeValue(change: int) -> void:
-  currentValue += change
-  _updateView()
+func update_value(change: int) -> void:
+  set_value(currentValue + change)
 
-func changeMaxValue(change: int) -> void:
-  maxValue += change
-  _updateView()
+func update_max_value(change: int) -> void:
+  set_max_value(maxValue + change)
 
-func updateValue(newValue: int) -> void:
+func set_value(newValue: int) -> void:
   currentValue = newValue
   _updateView()
 
-func updateMaxValue(newValue: int) -> void:
+func set_max_value(newValue: int) -> void:
   maxValue = newValue
   _updateView()
 

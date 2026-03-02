@@ -7,7 +7,6 @@ class_name Spawner
 const events = preload("res://src/constants/events.gd")
 const unit_scene = preload("res://src/components/unit/unit.tscn")
 
-
 func _ready() -> void:
   EventEmitter.add_listener(EventEmitter.event_name, self._handle_spawn_unit_event)
 
