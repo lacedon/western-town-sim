@@ -3,7 +3,7 @@ extends BuildingFunction
 class_name BuildingFunctionHouse
 
 const eventConstants = preload("res://src/constants/events.gd")
-const personCapacityResource = preload("res://resources/resources/town-resources/person-capacity.tres")
+const personCapacityResource = preload("res://assets/resources/town-resources/person-capacity.tres")
 
 @export var capacity: int = 6
 

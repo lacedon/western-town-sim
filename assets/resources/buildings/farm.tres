@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dpevskfowsdkc" path="res://src/resource-definition/building.gd" id="1_f5vc7"]
 [ext_resource type="Script" uid="uid://bul07m0x4lddb" path="res://src/resource-definition/building-function/building-function.gd" id="1_qsk0w"]
-[ext_resource type="Resource" uid="uid://byw3sne42y4dh" path="res://resources/resources/building-functions/food-farm.tres" id="2_0lkvr"]
+[ext_resource type="Resource" uid="uid://byw3sne42y4dh" path="res://assets/resources/building-functions/food-farm.tres" id="2_0lkvr"]
 [ext_resource type="Texture2D" uid="uid://ch5jvwwxtkdba" path="res://resources/images/farm.png" id="2_f546y"]
 
 [resource]

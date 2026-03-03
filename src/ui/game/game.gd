@@ -2,8 +2,8 @@ extends Control
 
 const eventConstants = preload("res://src/constants/events.gd")
 
-const buildingFarm = preload("res://resources/resources/buildings/farm.tres")
-const buildingFoodStorage = preload("res://resources/resources/buildings/food-storage.tres")
+const buildingFarm = preload("res://assets/resources/buildings/farm.tres")
+const buildingFoodStorage = preload("res://assets/resources/buildings/food-storage.tres")
 
 signal start_building(name: RBuilding)
 

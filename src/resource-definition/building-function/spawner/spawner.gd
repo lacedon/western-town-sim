@@ -4,7 +4,7 @@ class_name BuildingFunctionSpawner
 
 const events = preload("res://src/constants/events.gd")
 const random_helper = preload("res://src/common/random.gd")
-const person_capacity_resource = preload("res://resources/resources/town-resources/person-capacity.tres")
+const person_capacity_resource = preload("res://assets/resources/town-resources/person-capacity.tres")
 
 @export var unit: RUnit
 @export var unit_capacity_size: int = 1

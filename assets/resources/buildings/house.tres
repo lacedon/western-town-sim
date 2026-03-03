@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bul07m0x4lddb" path="res://src/resource-definition/building-function/building-function.gd" id="1_725ld"]
 [ext_resource type="Script" uid="uid://dpevskfowsdkc" path="res://src/resource-definition/building.gd" id="2_bnlry"]
-[ext_resource type="Resource" uid="uid://bo6ikoxw5souw" path="res://resources/resources/building-functions/house.tres" id="2_rde58"]
-[ext_resource type="Resource" uid="uid://ci3lpxap66tio" path="res://resources/resources/building-functions/town-citizen-spawner.tres" id="3_ba7ex"]
+[ext_resource type="Resource" uid="uid://bo6ikoxw5souw" path="res://assets/resources/building-functions/house.tres" id="2_rde58"]
+[ext_resource type="Resource" uid="uid://ci3lpxap66tio" path="res://assets/resources/building-functions/town-citizen-spawner.tres" id="3_ba7ex"]
 [ext_resource type="Texture2D" uid="uid://dxdmk30246rq2" path="res://resources/images/house.png" id="3_bnlry"]
 
 [resource]

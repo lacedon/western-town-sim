@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="BuildingFunctionSpawner" format=3 uid="uid://ci3lpxap66tio"]
 
 [ext_resource type="Script" uid="uid://cqyf8ph5jsudd" path="res://src/resource-definition/building-function/spawner/spawner.gd" id="1_k4v0r"]
-[ext_resource type="Resource" uid="uid://b8gben7m8bk1f" path="res://resources/resources/units/citizen.tres" id="2_m6qpq"]
+[ext_resource type="Resource" uid="uid://b8gben7m8bk1f" path="res://assets/resources/units/citizen.tres" id="2_m6qpq"]
 
 [resource]
 script = ExtResource("1_k4v0r")
