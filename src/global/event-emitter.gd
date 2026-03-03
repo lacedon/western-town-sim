@@ -4,8 +4,8 @@ signal event(signal_name: String, data: Variant)
 
 var event_name = event.get_name()
 
-var _emitters: Dictionary = {}
-var _listeners: Dictionary = {}
+var _emitters: Dictionary[String, Array] = {}
+var _listeners: Dictionary[String, Array] = {}
 
 func _ready():
 	add_emitter(self.event_name, self)

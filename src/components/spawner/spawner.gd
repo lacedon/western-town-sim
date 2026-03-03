@@ -13,7 +13,7 @@ func _ready() -> void:
 func _exit_tree() -> void:
   EventEmitter.remove_listener(EventEmitter.event_name, self._handle_spawn_unit_event)
 
-func _handle_spawn_unit_event(event_name: String,data: Dictionary) -> void:
+func _handle_spawn_unit_event(event_name: String, data: Dictionary) -> void:
   if event_name != events.SPAWN_UNIT:
     return
 
