@@ -40,6 +40,15 @@ func _init(
 func init() -> void:
   pass
 
+## Overwrite to specifiy logic here without touching target_reached
+func _handle_target_reached() -> void:
+  pass
+
 ## Tells AI that the target is reached
 func target_reached() -> void:
   is_moving = false
+  _handle_target_reached()
+
+func set_target_position(target: Vector2) -> void:
+  is_moving = true
+  self.target_changed.emit(target)
