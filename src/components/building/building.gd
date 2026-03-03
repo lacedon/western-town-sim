@@ -30,7 +30,7 @@ const ModeColors = {
 static func clone(originalBuilding: BuildingNode) -> BuildingNode:
   return BuildingNode.create(originalBuilding.building, originalBuilding.mode, originalBuilding.position)
 
-static func create(_building: RBuilding, _mode: = BuildingMode.planing, _position: = Vector2.ZERO) -> BuildingNode:
+static func create(_building: RBuilding, _mode := BuildingMode.planing, _position := Vector2.ZERO) -> BuildingNode:
   var createdBuilding: BuildingNode = BuildingScene.instantiate()
   createdBuilding.position = _position
   createdBuilding.building = _building

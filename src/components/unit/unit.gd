@@ -51,7 +51,7 @@ func set_target_position(target_position: Vector2) -> void:
   _is_moving = true
 
 func move_to_target(delta: float) -> void:
-  var next_path_position: = navigation_agent.get_next_path_position()
+  var next_path_position := navigation_agent.get_next_path_position()
 
   position = position.move_toward(next_path_position, unit.speed * delta)
 

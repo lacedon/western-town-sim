@@ -61,7 +61,7 @@ func parse_source_geometry() -> void:
   )
 
 func _create_region_mesh() -> NavigationPolygon:
-  var new_navigation_mesh: = NavigationPolygon.new()
+  var new_navigation_mesh := NavigationPolygon.new()
   new_navigation_mesh.agent_radius = 4
 
   # NavigationServer2D.region_set_navigation_polygon(region_rid, new_navigation_mesh)

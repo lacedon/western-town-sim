@@ -22,10 +22,10 @@ func _handle_spawn_unit_event(event_name: String,data: Dictionary) -> void:
   spawn_unit(unit, unit_position)
 
 func spawn_unit(unit: RUnit, unit_position: Vector2) -> void:
-  var unit_position_offset: = Vector2(0.5, 0.5)
-  var unit_position_noise: = Vector2(randf_range(0.25, 0.75), randf_range(0.25, 0.75))
+  var unit_position_offset := Vector2(0.5, 0.5)
+  var unit_position_noise := Vector2(randf_range(0.25, 0.75), randf_range(0.25, 0.75))
 
-  var unit_node: = unit_scene.instantiate()
+  var unit_node := unit_scene.instantiate()
   unit_node.unit = unit
   unit_node.position = (unit_position + unit_position_offset + unit_position_noise) * Vector2(GameConfig.tile_size)
   prints('Spawn unit', unit.name, 'at', unit_node.position)
