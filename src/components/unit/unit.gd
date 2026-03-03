@@ -2,7 +2,8 @@ extends Node2D
 
 class_name UnitNode
 
-const maxTriesToFindPosition: int = 10
+const UnitAIAbstract = preload('./ai/abstract/abstract-ai.gd')
+const AIHelper = preload('./ai/ai.gd')
 
 @export var unit: RUnit = null
 
@@ -10,45 +11,27 @@ const maxTriesToFindPosition: int = 10
 @onready var raycast: RayCast2D = $RayCast2D
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
-var _target_position: Vector2 = Vector2.ZERO
-var _is_moving: bool = false
+var _ai_agent: UnitAIAbstract
 
 func _ready() -> void:
   if !self.visible: return
   if !unit: return
 
   sprite.texture = unit.texture
-  set_random_target_within_radius()
+  _ai_agent = AIHelper.get_ai_agent(unit, self)
+  _ai_agent.connect(_ai_agent.target_changed.get_name(), set_target_position)
+  _ai_agent.init()
+  add_child(_ai_agent)
 
-func _process(_delta: float) -> void:
-  raycast.target_position = to_local(_target_position)
+func _exit_tree() -> void:
+  if _ai_agent:
+    _ai_agent.disconnect(_ai_agent.target_changed.get_name(), set_target_position)
 
 func _physics_process(delta: float) -> void:
-  if _is_moving: move_to_target(delta)
-  else: set_random_target_within_radius()
-
-func _generate_random_target_position() -> Vector2:
-  return position + Vector2(
-    randf_range(-unit.wanderingRadius, unit.wanderingRadius),
-    randf_range(-unit.wanderingRadius, unit.wanderingRadius)
-  )
-
-func set_random_target_within_radius() -> void:
-  _is_moving = false
-  var tries: int = 0
-  while tries < maxTriesToFindPosition:
-    tries += 1
-    var random_position: Vector2 = _generate_random_target_position()
-    navigation_agent.target_position = random_position
-
-    # if navigation_agent.is_target_reachable():
-    set_target_position(random_position)
-    return
+  if _ai_agent.is_moving: move_to_target(delta)
 
 func set_target_position(target_position: Vector2) -> void:
-  _target_position = target_position
   navigation_agent.target_position = target_position
-  _is_moving = true
 
 func move_to_target(delta: float) -> void:
   var next_path_position := navigation_agent.get_next_path_position()
@@ -56,5 +39,4 @@ func move_to_target(delta: float) -> void:
   position = position.move_toward(next_path_position, unit.speed * delta)
 
   if navigation_agent.is_navigation_finished():
-    # position = _target_position
-    set_random_target_within_radius()
+    _ai_agent.target_reached()

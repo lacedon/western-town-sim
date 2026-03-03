@@ -1,0 +1,4 @@
+enum AIAgents {
+  Wanderer,
+  Citizen,
+}
