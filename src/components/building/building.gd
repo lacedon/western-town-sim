@@ -109,6 +109,8 @@ func setMode(newMode: BuildingMode) -> void:
 
 func updateColoring() -> void:
   match mode:
+    BuildingMode.builder:
+      coloringBlock.color = ModeColors.planingSuccess if canBePlaced() else ModeColors.planingError
     BuildingMode.planing:
       coloringBlock.color = ModeColors.planingSuccess if canBePlaced() else ModeColors.planingError
     _:
