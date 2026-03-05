@@ -83,7 +83,7 @@ func _initBuilding() -> void:
 
   area2d.show()
   area2d.monitorable = mode == BuildingMode.placed
-  area2d.monitoring = mode == BuildingMode.planing
+  area2d.monitoring = mode == BuildingMode.planing || mode == BuildingMode.builder
 
 func _resetBuilding() -> void:
   sprite.texture = null
