@@ -12,12 +12,12 @@ const GameUIResource = preload("./resource.gd")
 ]
 
 func _ready() -> void:
-  GameResourceManager.connect(GameResourceManager.resource_updated.get_name(), self.update_resource)
-  GameResourceManager.connect(GameResourceManager.max_resource_updated.get_name(), self.update_max_resource)
+  StateController.economy_manager.connect(StateController.economy_manager.resource_updated.get_name(), self.update_resource)
+  StateController.economy_manager.connect(StateController.economy_manager.max_resource_updated.get_name(), self.update_max_resource)
 
 func _exit_tree() -> void:
-  GameResourceManager.disconnect(GameResourceManager.resource_updated.get_name(), self.update_resource)
-  GameResourceManager.disconnect(GameResourceManager.max_resource_updated.get_name(), self.update_max_resource)
+  StateController.economy_manager.disconnect(StateController.economy_manager.resource_updated.get_name(), self.update_resource)
+  StateController.economy_manager.disconnect(StateController.economy_manager.max_resource_updated.get_name(), self.update_max_resource)
 
 func update_resource(resource: TownResource, _diff: float) -> void:
   for resourceNode in resourceNodes:

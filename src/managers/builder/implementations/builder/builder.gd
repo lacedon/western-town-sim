@@ -1,4 +1,4 @@
-extends Node2D
+extends "../../builder.gd"
 
 const eventConstants = preload("res://src/constants/events.gd")
 const BuildingScene = preload("res://src/components/building/building.tscn")
@@ -13,11 +13,9 @@ var _isPlacingStarted: bool = false
 var _placingStartCoordinates: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
-  EventEmitter.add_listener(eventConstants.START_BUILDING, startPlacingBuilding)
   buildingNode.connect(buildingNode.areaEnteredExited.get_name(), _updateBuildingColoring)
 
 func _exit_tree() -> void:
-  EventEmitter.remove_listener(eventConstants.START_BUILDING, startPlacingBuilding)
   buildingNode.disconnect(buildingNode.areaEnteredExited.get_name(), _updateBuildingColoring)
 
 func _input(event: InputEvent) -> void:
@@ -62,11 +60,11 @@ func _input(event: InputEvent) -> void:
         elif buildingNode.canBePlaced():
           placeBuilding()
 
-        stopPlacingBuilding()
+        stop_building()
       # Cancel placing
       # TODO: Remove all buildings that were placed within chained placing
       elif event.button_index == MOUSE_BUTTON_RIGHT:
-        stopPlacingBuilding()
+        stop_building()
 
 func _parseCoordinate(eventPosition: Vector2, coordinateIndex: int, shouldReturnPixels = true) -> int:
   var tileSize: int = GameConfig.tile_size[coordinateIndex]
@@ -92,13 +90,13 @@ func tileCoordinatesToPixels(tileCoordinates: Vector2) -> Vector2:
 func _updateBuildingColoring() -> void:
   buildingNode.updateColoring()
 
-func startPlacingBuilding(building: RBuilding) -> void:
+func start_building(building: RBuilding) -> void:
   _isBuildingStarted = true
 
   buildingNode.setBuilding(building)
   buildingNode.show()
 
-func stopPlacingBuilding() -> void:
+func stop_building() -> void:
   _isBuildingStarted = false
   _isPlacingStarted = false
   buildingNode.setBuilding(null)

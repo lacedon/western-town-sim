@@ -12,15 +12,12 @@ const person_capacity_resource = preload("res://assets/resources/town-resources/
 var new_unit_resource: TownResource = person_capacity_resource.get_copy_with_value(unit_capacity_size)
 
 func on_day_change(building: RBuilding, position: Vector2) -> void:
-  var is_resource_used: bool = GameResourceManager.use_resource(new_unit_resource)
+  var is_resource_used: bool = StateController.economy_manager.use_resource(new_unit_resource)
 
   if !is_resource_used:
     return
 
-  var entrance = random_helper.get_random_element(building.entrances)
+  var entrance: Vector2 = random_helper.get_random_element(building.entrances)
   var unit_position: Vector2 = entrance + position if entrance else position
 
-  EventEmitter.emit_event(events.SPAWN_UNIT, {
-    unit = unit,
-    unit_position = unit_position
-  })
+  StateController.spawner.spawn_unit(unit, unit_position)

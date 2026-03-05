@@ -2,15 +2,7 @@ extends Button
 
 const eventConstants = preload("res://src/constants/events.gd")
 
-signal start_building(name: RBuilding)
-
 @export var building: RBuilding
 
-func _ready() -> void:
-  EventEmitter.add_emitter(eventConstants.START_BUILDING, self)
-
-func _exit_tree() -> void:
-  EventEmitter.remove_emitter(eventConstants.START_BUILDING, self)
-
 func startBuilding():
-  self.emit_signal(start_building.get_name(), building)
+  StateController.builder.start_building(building)

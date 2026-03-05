@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://pebggysscssr"]
+
+[ext_resource type="Script" uid="uid://4gshfmnv17np" path="res://src/managers/builder/implementations/builder/builder.gd" id="1_071ab"]
+[ext_resource type="PackedScene" uid="uid://b68sqk3787m8m" path="res://src/components/building/building.tscn" id="1_nlb10"]
+
+[node name="Builder" type="Node2D" unique_id=1011597952]
+script = ExtResource("1_071ab")
+
+[node name="Building" parent="." unique_id=1681095561 instance=ExtResource("1_nlb10")]
+mode = 0
+
+[node name="Label" type="Label" parent="." unique_id=654412525]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0

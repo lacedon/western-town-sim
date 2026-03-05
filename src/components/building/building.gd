@@ -9,6 +9,7 @@ const BuildingScene = preload('./building.tscn')
 const events = preload('res://src/constants/events.gd')
 
 enum BuildingMode {
+  builder,
   planing,
   placed,
 }
@@ -47,7 +48,8 @@ func _ready() -> void:
   _initBuilding()
 
   EventEmitter.add_emitter(events.ADD_ENVIRONMENT_OBSTACLE, self)
-  EventEmitter.add_listener(events.START_OF_DAY, _handle_start_of_day)
+  if mode != BuildingMode.builder:
+    StateController.day_timer.start_of_day.connect(_handle_start_of_day)
 
   if mode == BuildingMode.placed:
     handleModeSetPlaced()
@@ -60,7 +62,8 @@ func _exit_tree() -> void:
   area2d.disconnect(area2d.area_exited.get_name(), _emitAreaEnteredExited)
 
   EventEmitter.remove_emitter(events.ADD_ENVIRONMENT_OBSTACLE, self)
-  EventEmitter.remove_listener(events.START_OF_DAY, _handle_start_of_day)
+  if mode != BuildingMode.builder:
+    StateController.day_timer.start_of_day.disconnect(_handle_start_of_day)
 
 func _initBuilding() -> void:
   if !building: return _resetBuilding()

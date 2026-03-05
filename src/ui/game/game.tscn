@@ -1,23 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://6ujnvld0no1a"]
+[gd_scene format=3 uid="uid://6ujnvld0no1a"]
 
-[ext_resource type="Script" uid="uid://cmvh1tnrng0gq" path="res://src/ui/game/game.gd" id="1_2g8tl"]
-[ext_resource type="PackedScene" uid="uid://c2nb876rxooiu" path="res://src/ui/game/assets/resources.tscn" id="2_o31er"]
+[ext_resource type="PackedScene" uid="uid://c2nb876rxooiu" path="res://src/ui/game/resources/resources.tscn" id="2_o31er"]
 [ext_resource type="PackedScene" uid="uid://dclykfuuxcxtl" path="res://src/ui/game/actions/start-building.tscn" id="3_t67ik"]
 [ext_resource type="Resource" uid="uid://5ugpau5k357v" path="res://assets/resources/buildings/farm.tres" id="4_5cxrm"]
 [ext_resource type="Resource" uid="uid://c75b544krh5uk" path="res://assets/resources/buildings/food-storage.tres" id="5_uu1cu"]
 [ext_resource type="Resource" uid="uid://dcw4ejp70128k" path="res://assets/resources/buildings/house.tres" id="6_6cxgy"]
 [ext_resource type="Resource" uid="uid://833ijgpxgowr" path="res://assets/resources/buildings/road.tres" id="7_5cxrm"]
 
-[node name="GameUI" type="Control"]
+[node name="GameUI" type="Control" unique_id=642788920]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_2g8tl")
 
-[node name="BoxContainer" type="BoxContainer" parent="."]
+[node name="BoxContainer" type="BoxContainer" parent="." unique_id=236032830]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,39 +23,39 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer" unique_id=598628980]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Resources" type="HBoxContainer" parent="BoxContainer/VBoxContainer"]
+[node name="Resources" type="HBoxContainer" parent="BoxContainer/VBoxContainer" unique_id=2071973983]
 layout_mode = 2
 
-[node name="Resources" parent="BoxContainer/VBoxContainer/Resources" instance=ExtResource("2_o31er")]
+[node name="Resources" parent="BoxContainer/VBoxContainer/Resources" unique_id=740428165 instance=ExtResource("2_o31er")]
 layout_mode = 2
 
-[node name="Spacer" type="BoxContainer" parent="BoxContainer/VBoxContainer"]
+[node name="Spacer" type="BoxContainer" parent="BoxContainer/VBoxContainer" unique_id=203599102]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Actions" type="HBoxContainer" parent="BoxContainer/VBoxContainer"]
+[node name="Actions" type="HBoxContainer" parent="BoxContainer/VBoxContainer" unique_id=544926625]
 layout_mode = 2
 
-[node name="StartBuildingFarmCTA" parent="BoxContainer/VBoxContainer/Actions" instance=ExtResource("3_t67ik")]
+[node name="StartBuildingFarmCTA" parent="BoxContainer/VBoxContainer/Actions" unique_id=1419613622 instance=ExtResource("3_t67ik")]
 layout_mode = 2
 text = "Farm"
 building = ExtResource("4_5cxrm")
 
-[node name="StartBuildingFoodStorageCTA" parent="BoxContainer/VBoxContainer/Actions" instance=ExtResource("3_t67ik")]
+[node name="StartBuildingFoodStorageCTA" parent="BoxContainer/VBoxContainer/Actions" unique_id=632278018 instance=ExtResource("3_t67ik")]
 layout_mode = 2
 text = "Food Storage"
 building = ExtResource("5_uu1cu")
 
-[node name="StartBuildingHouseCTA" parent="BoxContainer/VBoxContainer/Actions" instance=ExtResource("3_t67ik")]
+[node name="StartBuildingHouseCTA" parent="BoxContainer/VBoxContainer/Actions" unique_id=290438850 instance=ExtResource("3_t67ik")]
 layout_mode = 2
 text = "House"
 building = ExtResource("6_6cxgy")
 
-[node name="StartBuildingRoadCTA" parent="BoxContainer/VBoxContainer/Actions" instance=ExtResource("3_t67ik")]
+[node name="StartBuildingRoadCTA" parent="BoxContainer/VBoxContainer/Actions" unique_id=1161383944 instance=ExtResource("3_t67ik")]
 layout_mode = 2
 text = "Road"
 building = ExtResource("7_5cxrm")

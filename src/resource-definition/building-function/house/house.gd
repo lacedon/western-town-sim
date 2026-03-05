@@ -8,7 +8,7 @@ const personCapacityResource = preload("res://assets/resources/town-resources/pe
 @export var capacity: int = 6
 
 func onBuildingPlaced(_building: RBuilding) -> void:
-  GameResourceManager.update_max_resource(personCapacityResource.name, capacity)
+  StateController.economy_manager.update_max_resource(personCapacityResource.name, capacity)
 
 func onBuildingDestroyed(_building: RBuilding) -> void:
-  GameResourceManager.update_max_resource(personCapacityResource.name, -capacity)
+  StateController.economy_manager.update_max_resource(personCapacityResource.name, -capacity)

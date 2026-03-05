@@ -23,7 +23,7 @@ config/icon="res://icon.svg"
 
 GameConfig="*res://src/global/game-config.gd"
 EventEmitter="*res://src/global/event-emitter.gd"
-GameResourceManager="*uid://crlnlpme8vvlg"
+StateController="*uid://tktjuo3h36yh"
 
 [layer_names]
 

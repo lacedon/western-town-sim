@@ -18,6 +18,7 @@
 ## Answer 5: ??? Do we really need to handle area? Maybe AI will select a random point in the area?
 ## Answer 6: AI should track the target
 
+# @abstract # TODO: check if it works
 extends Node
 
 signal target_changed(target: Vector2)
