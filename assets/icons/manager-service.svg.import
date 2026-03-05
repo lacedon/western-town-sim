@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dqq4hblt4k23r"
-valid=false
+path="res://.godot/imported/manager-service.svg-76a4924259efc48178ba3fe6ddd623ef.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://assets/icons/manager-service.svg"
+dest_files=["res://.godot/imported/manager-service.svg-76a4924259efc48178ba3fe6ddd623ef.ctex"]
 
 [params]
 
