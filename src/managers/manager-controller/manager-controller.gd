@@ -1,3 +1,5 @@
+@icon("res://assets/icons/manager-service.svg")
+
 extends Node
 
 const AbstractBuilder = preload('res://src/managers/builder/builder.gd')
