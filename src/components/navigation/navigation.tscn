@@ -6,8 +6,10 @@
 cell_size = 4.0
 agent_radius = 1.0
 
-[node name="Navigation" type="Node2D" unique_id=201039558]
+[node name="Navigation" type="Node2D" unique_id=99796657]
 script = ExtResource("1_ldmo7")
+size = null
+position_offset = null
 
 [node name="DebugPolygons" type="Node2D" parent="." unique_id=1106564801]
 

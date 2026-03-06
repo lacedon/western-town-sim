@@ -1,3 +1,5 @@
+@icon("res://assets/icons/navigator.svg")
+
 extends Node2D
 
 const events = preload('res://src/constants/events.gd')

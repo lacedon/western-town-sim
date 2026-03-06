@@ -25,13 +25,13 @@ buildingContainer = NodePath("../../Buildings")
 [node name="EconomyManager" parent="ManagerController" unique_id=1703907788 instance=ExtResource("1_cts34")]
 resources = null
 
+[node name="Navigation" parent="ManagerController" unique_id=201039558 instance=ExtResource("5_ia08b")]
+
 [node name="UnitSpawner" parent="ManagerController" unique_id=1104118351 node_paths=PackedStringArray("unitsContainer") instance=ExtResource("3_cts34")]
 unitsContainer = NodePath("../../Units")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1699835985]
 anchor_mode = 0
-
-[node name="Navigation" parent="." unique_id=201039558 instance=ExtResource("5_ia08b")]
 
 [node name="Grid" parent="." unique_id=2004956744 instance=ExtResource("3_qmidl")]
 
