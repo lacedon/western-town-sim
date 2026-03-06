@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RBuilding" format=3 uid="uid://c75b544krh5uk"]
+
+[ext_resource type="Script" uid="uid://bul07m0x4lddb" path="res://src/resource_definition/building_function/building_function.gd" id="1_esnbw"]
+[ext_resource type="Resource" uid="uid://cdfprgm0qp4x6" path="res://assets/resources/building_functions/food_storage.tres" id="2_51d4y"]
+[ext_resource type="Script" uid="uid://dpevskfowsdkc" path="res://src/resource_definition/building.gd" id="2_rvuly"]
+[ext_resource type="Texture2D" uid="uid://00s8u2ltd1nd" path="res://assets/images/food_storage.png" id="4_lqhlc"]
+
+[resource]
+script = ExtResource("2_rvuly")
+size = Vector2i(2, 2)
+texture = ExtResource("4_lqhlc")
+functions = Array[ExtResource("1_esnbw")]([ExtResource("2_51d4y")])
+entrances = Array[Vector2]([Vector2(0, -1), Vector2(1, 2)])
+metadata/_custom_type_script = "uid://dpevskfowsdkc"

@@ -2,7 +2,7 @@ extends Node2D
 
 class_name UnitNode
 
-const UnitAIAbstract = preload('./ai/abstract/abstract-ai.gd')
+const UnitAIAbstract = preload('./ai/abstract/abstract_ai.gd')
 const AIHelper = preload('./ai/ai.gd')
 
 @export var unit: RUnit = null

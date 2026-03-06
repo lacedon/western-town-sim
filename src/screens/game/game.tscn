@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://b5466diq4clt8"]
 
-[ext_resource type="PackedScene" uid="uid://bhhvemmhhlwxk" path="res://src/managers/manager-controller/manager-controller.tscn" id="1_brlkd"]
-[ext_resource type="PackedScene" uid="uid://bg0vv6kh5layi" path="res://src/managers/economy-manager/implementations/base-economy-manager/economy-manager.tscn" id="1_cts34"]
+[ext_resource type="PackedScene" uid="uid://bhhvemmhhlwxk" path="res://src/managers/manager_controller/manager_controller.tscn" id="1_brlkd"]
+[ext_resource type="PackedScene" uid="uid://bg0vv6kh5layi" path="res://src/managers/economy_manager/implementations/base_economy_manager/economy_manager.tscn" id="1_cts34"]
 [ext_resource type="PackedScene" uid="uid://6ujnvld0no1a" path="res://src/ui/game/game.tscn" id="1_eyx8b"]
 [ext_resource type="PackedScene" uid="uid://pebggysscssr" path="res://src/managers/builder/implementations/builder/builder.tscn" id="1_sjmr0"]
-[ext_resource type="PackedScene" uid="uid://8iwt2dxjsw7w" path="res://src/managers/spawner/implementations/base-unit-spawner/unit-spawner.tscn" id="3_cts34"]
+[ext_resource type="PackedScene" uid="uid://8iwt2dxjsw7w" path="res://src/managers/spawner/implementations/base_unit_spawner/unit_spawner.tscn" id="3_cts34"]
 [ext_resource type="PackedScene" uid="uid://cxkurqrmxefm0" path="res://src/components/grid/grid.tscn" id="3_qmidl"]
-[ext_resource type="PackedScene" uid="uid://qgkmhmaf33px" path="res://src/managers/day-timer/implementations/day-timer/day-timer.tscn" id="5_brlkd"]
+[ext_resource type="PackedScene" uid="uid://qgkmhmaf33px" path="res://src/managers/day_timer/implementations/day_timer/day_timer.tscn" id="5_brlkd"]
 [ext_resource type="PackedScene" uid="uid://c05ofa1jope1o" path="res://src/components/navigation/navigation.tscn" id="5_ia08b"]
 
 [node name="Game" type="Node2D" unique_id=1018720308]
@@ -23,6 +23,7 @@ buildingContainer = NodePath("../../Buildings")
 [node name="DayTimer" parent="ManagerController" unique_id=352876956 instance=ExtResource("5_brlkd")]
 
 [node name="EconomyManager" parent="ManagerController" unique_id=1703907788 instance=ExtResource("1_cts34")]
+resources = null
 
 [node name="UnitSpawner" parent="ManagerController" unique_id=1104118351 node_paths=PackedStringArray("unitsContainer") instance=ExtResource("3_cts34")]
 unitsContainer = NodePath("../../Units")

@@ -21,8 +21,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameConfig="*res://src/global/game-config.gd"
-EventEmitter="*res://src/global/event-emitter.gd"
+GameConfig="*res://src/global/game_config.gd"
+EventEmitter="*res://src/global/event_emitter.gd"
 StateController="*uid://tktjuo3h36yh"
 
 [layer_names]

@@ -1,4 +1,4 @@
-extends "../abstract/abstract-ai.gd"
+extends "../abstract/abstract_ai.gd"
 
 const max_tries_to_find_position: int = 10
 const awaiting_time_in_seconds: float = 2.

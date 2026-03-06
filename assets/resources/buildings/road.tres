@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="RBuilding" load_steps=4 format=3 uid="uid://833ijgpxgowr"]
+[gd_resource type="Resource" script_class="RBuilding" format=3 uid="uid://833ijgpxgowr"]
 
-[ext_resource type="Script" uid="uid://bul07m0x4lddb" path="res://src/resource-definition/building-function/building-function.gd" id="1_njygg"]
-[ext_resource type="Script" uid="uid://dpevskfowsdkc" path="res://src/resource-definition/building.gd" id="2_rj0w6"]
-[ext_resource type="Texture2D" uid="uid://budmyklr8c3rr" path="res://resources/images/road.png" id="3_rj0w6"]
+[ext_resource type="Script" uid="uid://bul07m0x4lddb" path="res://src/resource_definition/building_function/building_function.gd" id="1_njygg"]
+[ext_resource type="Script" uid="uid://dpevskfowsdkc" path="res://src/resource_definition/building.gd" id="2_rj0w6"]
+[ext_resource type="Texture2D" uid="uid://budmyklr8c3rr" path="res://assets/images/road.png" id="3_rj0w6"]
 
 [resource]
 script = ExtResource("2_rj0w6")

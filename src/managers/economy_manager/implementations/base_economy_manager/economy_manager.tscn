@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bg0vv6kh5layi"]
+
+[ext_resource type="Script" uid="uid://d0dwkdc8h6ofl" path="res://src/managers/economy_manager/implementations/base_economy_manager/economy_manager.gd" id="1_ongb7"]
+
+[node name="EconomyManager" type="Node" unique_id=1703907788]
+script = ExtResource("1_ongb7")

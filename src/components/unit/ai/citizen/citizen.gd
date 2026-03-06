@@ -1,1 +1,1 @@
-extends "../abstract/abstract-ai.gd"
+extends "../abstract/abstract_ai.gd"

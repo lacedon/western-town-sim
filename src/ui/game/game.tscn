@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://6ujnvld0no1a"]
 
 [ext_resource type="PackedScene" uid="uid://c2nb876rxooiu" path="res://src/ui/game/resources/resources.tscn" id="2_o31er"]
-[ext_resource type="PackedScene" uid="uid://dclykfuuxcxtl" path="res://src/ui/game/actions/start-building.tscn" id="3_t67ik"]
+[ext_resource type="PackedScene" uid="uid://dclykfuuxcxtl" path="res://src/ui/game/actions/start_building.tscn" id="3_t67ik"]
 [ext_resource type="Resource" uid="uid://5ugpau5k357v" path="res://assets/resources/buildings/farm.tres" id="4_5cxrm"]
-[ext_resource type="Resource" uid="uid://c75b544krh5uk" path="res://assets/resources/buildings/food-storage.tres" id="5_uu1cu"]
+[ext_resource type="Resource" uid="uid://c75b544krh5uk" path="res://assets/resources/buildings/food_storage.tres" id="5_uu1cu"]
 [ext_resource type="Resource" uid="uid://dcw4ejp70128k" path="res://assets/resources/buildings/house.tres" id="6_6cxgy"]
 [ext_resource type="Resource" uid="uid://833ijgpxgowr" path="res://assets/resources/buildings/road.tres" id="7_5cxrm"]
 

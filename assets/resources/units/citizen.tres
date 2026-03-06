@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="RUnit" load_steps=3 format=3 uid="uid://b8gben7m8bk1f"]
+[gd_resource type="Resource" script_class="RUnit" format=3 uid="uid://b8gben7m8bk1f"]
 
-[ext_resource type="Script" uid="uid://dn3m2sx856lti" path="res://src/resource-definition/unit/unit.gd" id="1_mrby8"]
-[ext_resource type="Texture2D" uid="uid://ij7arompnk8v" path="res://resources/images/citizen.png" id="2_njkev"]
+[ext_resource type="Script" uid="uid://dn3m2sx856lti" path="res://src/resource_definition/units/unit.gd" id="1_mrby8"]
+[ext_resource type="Texture2D" uid="uid://ij7arompnk8v" path="res://assets/images/citizen.png" id="2_njkev"]
 
 [resource]
 script = ExtResource("1_mrby8")

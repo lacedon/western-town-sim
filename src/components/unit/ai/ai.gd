@@ -1,5 +1,5 @@
-const AIAgents = preload("res://src/types/ai-agents.gd").AIAgents
-const UnitAIAbstract = preload('./abstract/abstract-ai.gd')
+const AIAgents = preload("res://src/types/ai_agents.gd").AIAgents
+const UnitAIAbstract = preload('./abstract/abstract_ai.gd')
 const UnitAIWanderer = preload('./wanderer/wanderer.gd')
 const UnitAICitizen = preload('./citizen/citizen.gd')
 
