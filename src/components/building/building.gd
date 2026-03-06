@@ -3,7 +3,6 @@ extends Node2D
 class_name BuildingNode
 
 signal areaEnteredExited
-signal add_environment_obstacle(position: Vector2, size: Vector2i)
 
 const BuildingScene = preload('./building.tscn')
 const events = preload('res://src/constants/events.gd')
@@ -47,7 +46,6 @@ func _ready() -> void:
 
   _initBuilding()
 
-  EventEmitter.add_emitter(events.ADD_ENVIRONMENT_OBSTACLE, self)
   if mode != BuildingMode.builder:
     StateController.day_timer.start_of_day.connect(_handle_start_of_day)
 
@@ -61,7 +59,6 @@ func _exit_tree() -> void:
   area2d.disconnect(area2d.area_entered.get_name(), _emitAreaEnteredExited)
   area2d.disconnect(area2d.area_exited.get_name(), _emitAreaEnteredExited)
 
-  EventEmitter.remove_emitter(events.ADD_ENVIRONMENT_OBSTACLE, self)
   if mode != BuildingMode.builder:
     StateController.day_timer.start_of_day.disconnect(_handle_start_of_day)
 
@@ -118,7 +115,7 @@ func updateColoring() -> void:
 
 func emitObstacleAddedEvent() -> void:
   var sizeInPixels: Vector2 = building.size * GameConfig.tile_size
-  add_environment_obstacle.emit(
+  StateController.navigation_server.add_environment_obstacle(
     position - Vector2(float(sizeInPixels.x / 2), float(sizeInPixels.y / 2)),
     sizeInPixels
   )

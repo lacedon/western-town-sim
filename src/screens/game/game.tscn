@@ -7,14 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://8iwt2dxjsw7w" path="res://src/managers/spawner/implementations/base_unit_spawner/unit_spawner.tscn" id="3_cts34"]
 [ext_resource type="PackedScene" uid="uid://cxkurqrmxefm0" path="res://src/components/grid/grid.tscn" id="3_qmidl"]
 [ext_resource type="PackedScene" uid="uid://qgkmhmaf33px" path="res://src/managers/day_timer/implementations/day_timer/day_timer.tscn" id="5_brlkd"]
-[ext_resource type="PackedScene" uid="uid://c05ofa1jope1o" path="res://src/components/navigation/navigation.tscn" id="5_ia08b"]
+[ext_resource type="PackedScene" uid="uid://c05ofa1jope1o" path="res://src/managers/navigation_server/implementations/base_navigation_server/base_navigation_server.tscn" id="5_ia08b"]
 
 [node name="Game" type="Node2D" unique_id=1018720308]
 
-[node name="ManagerController" parent="." unique_id=2684897 node_paths=PackedStringArray("builder", "day_timer", "economy_manager", "spawner") instance=ExtResource("1_brlkd")]
+[node name="ManagerController" parent="." unique_id=2684897 node_paths=PackedStringArray("builder", "day_timer", "economy_manager", "navigation_server", "spawner") instance=ExtResource("1_brlkd")]
 builder = NodePath("Builder")
 day_timer = NodePath("DayTimer")
 economy_manager = NodePath("EconomyManager")
+navigation_server = NodePath("Navigation")
 spawner = NodePath("UnitSpawner")
 
 [node name="Builder" parent="ManagerController" unique_id=246145107 node_paths=PackedStringArray("buildingContainer") instance=ExtResource("1_sjmr0")]
@@ -26,6 +27,8 @@ buildingContainer = NodePath("../../Buildings")
 resources = null
 
 [node name="Navigation" parent="ManagerController" unique_id=201039558 instance=ExtResource("5_ia08b")]
+size = Vector2i(0, 0)
+position_offset = Vector2(0, 0)
 
 [node name="UnitSpawner" parent="ManagerController" unique_id=1104118351 node_paths=PackedStringArray("unitsContainer") instance=ExtResource("3_cts34")]
 unitsContainer = NodePath("../../Units")

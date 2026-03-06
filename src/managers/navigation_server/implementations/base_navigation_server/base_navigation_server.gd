@@ -1,13 +1,10 @@
-@icon("res://assets/icons/navigator.svg")
-
-extends Node2D
+extends "../../navigation_server.gd"
 
 const events = preload('res://src/constants/events.gd')
 
 @export var size: Vector2i = Vector2i.ZERO
 @export var position_offset: Vector2 = Vector2.ZERO
 
-@onready var debugPolygonParent: Node = $DebugPolygons
 @onready var navigationRegion: NavigationRegion2D = $NavigationRegion2D
 
 var _obstacles: Array[PackedVector2Array] = []
@@ -20,9 +17,6 @@ var should_rebake: bool = false
 var is_baking_in_process: bool = false
 
 func _ready() -> void:
-  EventEmitter.add_listener(events.ADD_ENVIRONMENT_OBSTACLE, self._on_add_environment_obstacle)
-  EventEmitter.add_listener(events.REMOVE_ENVIRONMENT_OBSTACLE, self._on_remove_environment_obstacle)
-
   map_rid = _create_map()
   # region_rid = _create_region(map_rid)
   region_rid = navigationRegion.get_rid()
@@ -31,10 +25,6 @@ func _ready() -> void:
   navigation_mesh = navigationRegion.navigation_polygon
 
   parse_source_geometry.call_deferred()
-
-func _exit_tree() -> void:
-  EventEmitter.remove_listener(events.ADD_ENVIRONMENT_OBSTACLE, self._on_add_environment_obstacle)
-  EventEmitter.remove_listener(events.REMOVE_ENVIRONMENT_OBSTACLE, self._on_remove_environment_obstacle)
 
 func _create_map() -> RID:
   return get_world_2d().get_navigation_map()
@@ -107,13 +97,13 @@ func on_baking_done() -> void:
     should_rebake = false
     rebake_navigation()
 
-func _on_add_environment_obstacle(obstacle_position: Vector2, obstacle_size: Vector2i) -> void:
+func add_environment_obstacle(obstacle_position: Vector2, obstacle_size: Vector2i) -> void:
   var obstacle: PackedVector2Array = _create_obstacle(obstacle_position, obstacle_size)
   if (!_obstacles.has(obstacle)):
     _obstacles.append(obstacle)
   rebake_navigation()
 
-func _on_remove_environment_obstacle(obstacle_position: Vector2, obstacle_size: Vector2i) -> void:
+func remove_environment_obstacle(obstacle_position: Vector2, obstacle_size: Vector2i) -> void:
   _obstacles.erase(_create_obstacle(obstacle_position, obstacle_size))
   rebake_navigation()
 

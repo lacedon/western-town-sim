@@ -3,17 +3,20 @@ extends Node
 const AbstractBuilder = preload("res://src/managers/builder/builder.gd")
 const AbstractDayTimer = preload("res://src/managers/day_timer/day_timer.gd")
 const AbstractEconomyManager = preload("res://src/managers/economy_manager/economy_manager.gd")
+const AbstractNavigationServer = preload('res://src/managers/navigation_server/navigation_server.gd')
 const AbstractSpawner = preload("res://src/managers/spawner/spawner.gd")
 
 @export var builder: AbstractBuilder = null
 @export var day_timer: AbstractDayTimer = null
 @export var economy_manager: AbstractEconomyManager = null
+@export var navigation_server: AbstractNavigationServer = null
 @export var spawner: AbstractSpawner = null
 
 func reset() -> void:
   builder = null
   day_timer = null
   economy_manager = null
+  navigation_server = null
   spawner = null
 
 func set_builder(new_builder: AbstractBuilder) -> void:
@@ -24,6 +27,9 @@ func set_day_timer(new_day_timer: AbstractDayTimer) -> void:
 
 func set_economy_manager(new_economy_manager: AbstractEconomyManager) -> void:
   self.economy_manager = new_economy_manager
+
+func set_navigation_server(new_navigation_server: AbstractNavigationServer) -> void:
+  self.navigation_server = new_navigation_server
 
 func set_spawner(new_spawner: AbstractSpawner) -> void:
   self.spawner = new_spawner

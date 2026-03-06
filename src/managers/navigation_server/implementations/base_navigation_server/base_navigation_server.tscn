@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c05ofa1jope1o"]
 
-[ext_resource type="Script" uid="uid://b45xcnjhsxd8t" path="res://src/components/navigation/navigation.gd" id="1_ldmo7"]
+[ext_resource type="Script" uid="uid://b45xcnjhsxd8t" path="res://src/managers/navigation_server/implementations/base_navigation_server/base_navigation_server.gd" id="1_ldmo7"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ldmo7"]
 cell_size = 4.0
@@ -10,8 +10,6 @@ agent_radius = 1.0
 script = ExtResource("1_ldmo7")
 size = null
 position_offset = null
-
-[node name="DebugPolygons" type="Node2D" parent="." unique_id=1106564801]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1894620850]
 navigation_polygon = SubResource("NavigationPolygon_ldmo7")
