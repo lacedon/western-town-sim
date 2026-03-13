@@ -1,7 +1,5 @@
 extends "../../navigation_server.gd"
 
-const events = preload('res://src/constants/events.gd')
-
 @export var size: Vector2i = Vector2i.ZERO
 @export var position_offset: Vector2 = Vector2.ZERO
 

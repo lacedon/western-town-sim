@@ -5,7 +5,6 @@ class_name BuildingNode
 signal areaEnteredExited
 
 const BuildingScene = preload('./building.tscn')
-const events = preload('res://src/constants/events.gd')
 
 enum BuildingMode {
   builder,

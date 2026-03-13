@@ -1,7 +1,6 @@
 class_name UnitSpawner
 extends "../../spawner.gd"
 
-const events = preload("res://src/constants/events.gd")
 const unit_scene = preload("res://src/components/unit/unit.tscn")
 
 @export var unitsContainer: Node

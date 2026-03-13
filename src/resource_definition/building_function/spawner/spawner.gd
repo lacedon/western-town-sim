@@ -2,7 +2,6 @@ extends BuildingFunction
 
 class_name BuildingFunctionSpawner
 
-const events = preload("res://src/constants/events.gd")
 const random_helper = preload("res://src/common/random.gd")
 const person_capacity_resource = preload("res://assets/resources/town_resources/person_capacity.tres")
 

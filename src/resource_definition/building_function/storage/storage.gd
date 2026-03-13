@@ -2,8 +2,6 @@ extends BuildingFunction
 
 class_name BuildingFunctionStorage
 
-const eventConstants = preload("res://src/constants/events.gd")
-
 @export var resources: Array[StorageResourceDefinition] = []
 
 func onBuildingPlaced(_building: RBuilding) -> void:

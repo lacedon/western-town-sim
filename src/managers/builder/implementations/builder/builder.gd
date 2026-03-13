@@ -1,6 +1,5 @@
 extends "../../builder.gd"
 
-const eventConstants = preload("res://src/constants/events.gd")
 const BuildingScene = preload("res://src/components/building/building.tscn")
 const isOdd = preload("res://src/common/is_odd.gd")
 

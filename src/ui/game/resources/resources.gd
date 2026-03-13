@@ -1,6 +1,5 @@
 extends Control
 
-const eventConstants = preload("res://src/constants/events.gd")
 const GameUIResource = preload("./resource.gd")
 
 @onready var resourceFood: GameUIResource = $ResourceFood
