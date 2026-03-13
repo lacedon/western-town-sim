@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bg0vv6kh5layi" path="res://src/managers/economy_manager/implementations/base_economy_manager/economy_manager.tscn" id="1_cts34"]
 [ext_resource type="PackedScene" uid="uid://6ujnvld0no1a" path="res://src/ui/game/game.tscn" id="1_eyx8b"]
 [ext_resource type="PackedScene" uid="uid://pebggysscssr" path="res://src/managers/builder/implementations/builder/builder.tscn" id="1_sjmr0"]
+[ext_resource type="PackedScene" uid="uid://cg3y03sn5vhhj" path="res://src/managers/job_manager/implementations/base_job_manager/base_job_manager.tscn" id="2_ia08b"]
 [ext_resource type="PackedScene" uid="uid://8iwt2dxjsw7w" path="res://src/managers/spawner/implementations/base_unit_spawner/unit_spawner.tscn" id="3_cts34"]
 [ext_resource type="PackedScene" uid="uid://cxkurqrmxefm0" path="res://src/components/grid/grid.tscn" id="3_qmidl"]
 [ext_resource type="PackedScene" uid="uid://qgkmhmaf33px" path="res://src/managers/day_timer/implementations/day_timer/day_timer.tscn" id="5_brlkd"]
@@ -11,12 +12,15 @@
 
 [node name="Game" type="Node2D" unique_id=1018720308]
 
-[node name="ManagerController" parent="." unique_id=2684897 node_paths=PackedStringArray("builder", "day_timer", "economy_manager", "navigation_server", "spawner") instance=ExtResource("1_brlkd")]
+[node name="ManagerController" parent="." unique_id=2684897 node_paths=PackedStringArray("builder", "day_timer", "economy_manager", "job_manager", "navigation_server", "spawner") instance=ExtResource("1_brlkd")]
 builder = NodePath("Builder")
 day_timer = NodePath("DayTimer")
 economy_manager = NodePath("EconomyManager")
+job_manager = NodePath("BaseJobManager")
 navigation_server = NodePath("Navigation")
 spawner = NodePath("UnitSpawner")
+
+[node name="BaseJobManager" parent="ManagerController" unique_id=1827303704 instance=ExtResource("2_ia08b")]
 
 [node name="Builder" parent="ManagerController" unique_id=246145107 node_paths=PackedStringArray("buildingContainer") instance=ExtResource("1_sjmr0")]
 buildingContainer = NodePath("../../Buildings")

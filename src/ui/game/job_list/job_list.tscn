@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bv2880i2simn7"]
+
+[ext_resource type="Script" uid="uid://cy1c4mqha8gbq" path="res://src/ui/game/job_list/job_list.gd" id="1_1mnjf"]
+
+[node name="JobList" type="ItemList" unique_id=1152011923]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -952.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1mnjf")

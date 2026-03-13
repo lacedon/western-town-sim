@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://6ujnvld0no1a"]
 
+[ext_resource type="PackedScene" uid="uid://bv2880i2simn7" path="res://src/ui/game/job_list/job_list.tscn" id="2_5cxrm"]
 [ext_resource type="PackedScene" uid="uid://c2nb876rxooiu" path="res://src/ui/game/resources/resources.tscn" id="2_o31er"]
 [ext_resource type="PackedScene" uid="uid://dclykfuuxcxtl" path="res://src/ui/game/actions/start_building.tscn" id="3_t67ik"]
 [ext_resource type="Resource" uid="uid://5ugpau5k357v" path="res://assets/resources/buildings/farm.tres" id="4_5cxrm"]
@@ -32,6 +33,30 @@ layout_mode = 2
 
 [node name="Resources" parent="BoxContainer/VBoxContainer/Resources" unique_id=740428165 instance=ExtResource("2_o31er")]
 layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="BoxContainer/VBoxContainer/Resources" unique_id=1397510889]
+layout_mode = 2
+
+[node name="Resources2" type="HBoxContainer" parent="BoxContainer/VBoxContainer" unique_id=8168247]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="Control" type="Control" parent="BoxContainer/VBoxContainer/Resources2" unique_id=282097819]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control2" type="Control" parent="BoxContainer/VBoxContainer/Resources2" unique_id=1462383350]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control3" type="Control" parent="BoxContainer/VBoxContainer/Resources2" unique_id=89780160]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="JobList" parent="BoxContainer/VBoxContainer/Resources2" unique_id=1152011923 instance=ExtResource("2_5cxrm")]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Spacer" type="BoxContainer" parent="BoxContainer/VBoxContainer" unique_id=203599102]
 layout_mode = 2

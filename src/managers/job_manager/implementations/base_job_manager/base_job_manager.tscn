@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cg3y03sn5vhhj"]
+
+[ext_resource type="Script" uid="uid://dotimyrtyhibo" path="res://src/managers/job_manager/implementations/base_job_manager/base_job_manager.gd" id="1_dnveo"]
+
+[node name="BaseJobManager" type="Node2D" unique_id=1827303704]
+script = ExtResource("1_dnveo")
