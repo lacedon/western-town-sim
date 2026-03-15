@@ -108,5 +108,5 @@ func placeBuilding(buildingPosition: Vector2 = Vector2.INF) -> BuildingNode:
   buildingContainer.add_child(building)
   if buildingPosition != Vector2.INF:
     building.position = buildingPosition
-  building.building.onBuildingPlaced()
+  building.building.on_building_placed()
   return building

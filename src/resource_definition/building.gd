@@ -40,13 +40,13 @@ func clone() -> RBuilding:
     self.entrances.duplicate()
   )
 
-func onBuildingPlaced() -> void:
+func on_building_placed() -> void:
   for function in functions:
-    function.onBuildingPlaced(self)
+    function.on_building_placed(self)
 
-func onBuildingDestroyed() -> void:
+func on_building_destroyed() -> void:
   for function in functions:
-    function.onBuildingDestroyed(self)
+    function.on_building_destroyed(self)
 
 func on_day_change(position: Vector2) -> void:
   for function in functions:
