@@ -1,7 +1,6 @@
 extends "../abstract/abstract_ai.gd"
 class_name CitizenAI
 
-const AbstractCitizenState = preload("./states/abstract_state.gd")
 const Thinker = preload("./states/thinker.gd")
 
 var state: AbstractCitizenState
