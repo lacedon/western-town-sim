@@ -7,4 +7,5 @@
 script = ExtResource("1_mrby8")
 name = "Citizen"
 texture = ExtResource("2_njkev")
+ai_agent = 1
 metadata/_custom_type_script = "uid://dn3m2sx856lti"
