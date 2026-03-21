@@ -19,6 +19,8 @@ func remove_jobs(jobs_to_remove: Array[RJob]) -> void:
     remove_job(job)
 
 func assign_job(job: RJob, unit: RUnit) -> void:
+  if job.assignee: return
+
   job.assignee = unit
   self.job_updated.emit(job)
 
@@ -30,3 +32,7 @@ func get_all_jobs() -> Array[RJob]:
 
 func get_available_jobs() -> Array[RJob]:
   return jobs.filter(is_job_available)
+
+func get_available_job() -> RJob:
+  var available_jobs = get_available_jobs()
+  return null if available_jobs.is_empty() else available_jobs[0]

@@ -1,9 +1,8 @@
+## This state just makes the unit wander around within a certain radius
+
 extends "./abstract_state.gd";
 
 const Thinker = preload("./thinker.gd")
-
-## This state just makes the citizen wander around within a certain radius
-## TODO: think how exit from the state
 
 const max_tries_to_find_position: int = 10
 const awaiting_time_in_seconds: float = 2.
