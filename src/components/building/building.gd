@@ -1,8 +1,5 @@
 extends Node2D
-
 class_name BuildingNode
-
-signal areaEnteredExited
 
 const BuildingScene = preload('./building.tscn')
 
@@ -51,12 +48,12 @@ func _ready() -> void:
   if mode == BuildingMode.placed:
     handleModeSetPlaced()
 
-  area2d.connect(area2d.area_entered.get_name(), _emitAreaEnteredExited)
-  area2d.connect(area2d.area_exited.get_name(), _emitAreaEnteredExited)
+  area2d.connect(area2d.area_entered.get_name(), _handle_area_enter_exit)
+  area2d.connect(area2d.area_exited.get_name(), _handle_area_enter_exit)
 
 func _exit_tree() -> void:
-  area2d.disconnect(area2d.area_entered.get_name(), _emitAreaEnteredExited)
-  area2d.disconnect(area2d.area_exited.get_name(), _emitAreaEnteredExited)
+  area2d.disconnect(area2d.area_entered.get_name(), _handle_area_enter_exit)
+  area2d.disconnect(area2d.area_exited.get_name(), _handle_area_enter_exit)
 
   if mode != BuildingMode.builder:
     StateController.day_timer.start_of_day.disconnect(_handle_start_of_day)
@@ -86,8 +83,8 @@ func _resetBuilding() -> void:
   coloringBlock.hide()
   area2d.hide()
 
-func _emitAreaEnteredExited(_area: Area2D) -> void:
-  emit_signal(areaEnteredExited.get_name())
+func _handle_area_enter_exit(_area: Area2D) -> void:
+  updateColoring()
 
 func setBuilding(_building: RBuilding) -> void:
   building = _building

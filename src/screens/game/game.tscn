@@ -22,8 +22,8 @@ spawner = NodePath("UnitSpawner")
 
 [node name="BaseJobManager" parent="ManagerController" unique_id=1827303704 instance=ExtResource("2_ia08b")]
 
-[node name="Builder" parent="ManagerController" unique_id=246145107 node_paths=PackedStringArray("buildingContainer") instance=ExtResource("1_sjmr0")]
-buildingContainer = NodePath("../../Buildings")
+[node name="Builder" parent="ManagerController" unique_id=246145107 node_paths=PackedStringArray("building_container") instance=ExtResource("1_sjmr0")]
+building_container = NodePath("../../Buildings")
 
 [node name="DayTimer" parent="ManagerController" unique_id=352876956 instance=ExtResource("5_brlkd")]
 
