@@ -7,6 +7,6 @@
 [resource]
 script = ExtResource("2_rj0w6")
 name = "Road"
-buildingMode = 1
+building_mode = 1
 texture = ExtResource("3_rj0w6")
 metadata/_custom_type_script = "uid://dpevskfowsdkc"

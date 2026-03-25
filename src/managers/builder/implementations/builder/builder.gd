@@ -28,7 +28,7 @@ func _input(event: InputEvent) -> void:
       _isPlacingStarted = true
       _placingStartCoordinates = _parseCoordinates(event.position, false)
       # Place the first building in the chain
-      if buildingNode.building.buildingMode == RBuilding.BuildingMode.chaining:
+      if buildingNode.building.building_mode == RBuilding.BuildingMode.chaining:
         placeBuilding()
     # Mouse key is released
     elif event.is_released():
@@ -36,7 +36,7 @@ func _input(event: InputEvent) -> void:
       if event.button_index == MOUSE_BUTTON_LEFT:
         # Place chain of buildings
         # TODO: Refactor this mess
-        if buildingNode.building.buildingMode == RBuilding.BuildingMode.chaining:
+        if buildingNode.building.building_mode == RBuilding.BuildingMode.chaining:
           var targetX: float = _parseCoordinate(event.position, 0, false)
           var targetY: float = _parseCoordinate(event.position, 1, false)
           var isXBigger: bool = abs(_placingStartCoordinates.x - targetX) > abs(_placingStartCoordinates.y - targetY)
