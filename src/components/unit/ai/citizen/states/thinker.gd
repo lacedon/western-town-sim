@@ -3,6 +3,7 @@
 
 extends "./abstract_state.gd"
 
+const CoordinateParser = preload("res://src/common/coordinate_parser.gd")
 const Wanderer = preload("./wanderer.gd")
 const Walker = preload("./walker.gd")
 
@@ -31,7 +32,7 @@ func _check_job_state() -> bool:
 
   StateController.job_manager.assign_job(available_job, self.unit)
   var next_state := Walker.new().copy(self)
-  next_state.target = available_job.building.get_entrace_position()
+  next_state.target = CoordinateParser.game_tiles_center_to_pixels(available_job.building.get_entrance_position_gt())
   self.ai.set_state(next_state)
 
   return true

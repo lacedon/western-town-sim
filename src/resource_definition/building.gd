@@ -63,9 +63,7 @@ func on_day_change(position: Vector2) -> void:
   for function in functions:
     function.on_day_change(self, position)
 
-func get_entrace_position() -> Vector2:
+## Returns absolute position of a random entrance in game tile coordinates
+func get_entrance_position_gt() -> Vector2:
   var entrance: Vector2 = self.entrances.pick_random()
-  return Vector2(
-    entrance.x * GameConfig.tile_size.x,
-    entrance.y * GameConfig.tile_size.y
-  ) # + node position ???
+  return position_gt + entrance

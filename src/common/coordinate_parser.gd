@@ -6,6 +6,11 @@ static func game_tiles_to_pixels(tile_position: Vector2, tile_size: Vector2 = Ga
     tile_position.y * tile_size.y
   )
 
+## Transform game tile coordinates into pixels (centered)
+## @example game_tiles_center_to_pixels(Vector2(3, 6), Vector2(32, 32)) // Vector2(112, 208)
+static func game_tiles_center_to_pixels(tile_position: Vector2, tile_size: Vector2 = GameConfig.tile_size) -> Vector2:
+  return game_tiles_to_pixels(tile_position, tile_size) + tile_size * 0.5
+
 ## Transform pixels into game tile coordinates
 ## @example pixels_to_game_tiles(Vector2(100, 200), Vector2(32, 32)) // Vector2(3, 6)
 static func pixels_to_game_tiles(pixels_position: Vector2, tile_size: Vector2 = GameConfig.tile_size) -> Vector2:
