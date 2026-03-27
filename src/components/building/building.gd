@@ -35,7 +35,7 @@ static func create(_building: RBuilding, _mode := BuildingMode.planing, _positio
 
 func _ready() -> void:
   if !self.visible:
-    setMode(BuildingMode.planing)
+    set_mode(BuildingMode.planing)
     area2d.monitorable = false
     area2d.monitoring = false
     return
@@ -59,7 +59,7 @@ func _exit_tree() -> void:
     StateController.day_timer.start_of_day.disconnect(_handle_start_of_day)
 
 func _initBuilding() -> void:
-  if !building: return _resetBuilding()
+  if !building: return _reset_building()
 
   var buildingSizeInPixels: Vector2i = building.size * GameConfig.tile_size
   var buildingCenteringPosition: Vector2 = -buildingSizeInPixels / 2
@@ -78,7 +78,7 @@ func _initBuilding() -> void:
   area2d.monitorable = mode == BuildingMode.placed
   area2d.monitoring = mode == BuildingMode.planing || mode == BuildingMode.builder
 
-func _resetBuilding() -> void:
+func _reset_building() -> void:
   sprite.texture = null
   coloringBlock.hide()
   area2d.hide()
@@ -86,14 +86,14 @@ func _resetBuilding() -> void:
 func _handle_area_enter_exit(_area: Area2D) -> void:
   updateColoring()
 
-func setBuilding(_building: RBuilding) -> void:
+func set_building(_building: RBuilding) -> void:
   building = _building
   _initBuilding()
 
-func canBePlaced() -> bool:
+func can_be_placed() -> bool:
   return !area2d.has_overlapping_areas()
 
-func setMode(newMode: BuildingMode) -> void:
+func set_mode(newMode: BuildingMode) -> void:
   mode = newMode
   updateColoring()
 
@@ -103,9 +103,9 @@ func setMode(newMode: BuildingMode) -> void:
 func updateColoring() -> void:
   match mode:
     BuildingMode.builder:
-      coloringBlock.color = ModeColors.planingSuccess if canBePlaced() else ModeColors.planingError
+      coloringBlock.color = ModeColors.planingSuccess if can_be_placed() else ModeColors.planingError
     BuildingMode.planing:
-      coloringBlock.color = ModeColors.planingSuccess if canBePlaced() else ModeColors.planingError
+      coloringBlock.color = ModeColors.planingSuccess if can_be_placed() else ModeColors.planingError
     _:
       coloringBlock.color = ModeColors.normal
 

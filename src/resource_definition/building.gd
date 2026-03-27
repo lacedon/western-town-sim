@@ -15,7 +15,7 @@ func _init(
   _building_mode: BuildingMode = self.building_mode,
   _functions: Array[BuildingFunction] = self.functions,
   _entrances: Array[Vector2] = self.entrances,
-  _position_tiles: Vector2 = self.position_tiles
+  _position_gt: Vector2 = self.position_gt
 ):
   self.name = _name
   self.size = _size
@@ -23,7 +23,7 @@ func _init(
   self.building_mode = _building_mode
   self.functions = _functions
   self.entrances = _entrances
-  self.position_tiles = _position_tiles
+  self.position_gt = _position_gt
 
 @export var name: String = ":: Building ::"
 @export var size: Vector2i = Vector2i.ONE
@@ -33,7 +33,7 @@ func _init(
 ## Array of game tile coordinates for each entrance in the building
 @export var entrances: Array[Vector2] = []
 ## Position of the building in game tile coordinates
-@export var position_tiles: Vector2 = Vector2.ZERO
+@export var position_gt: Vector2 = Vector2.ZERO
 
 func clone() -> RBuilding:
   return RBuilding.new(
@@ -43,12 +43,12 @@ func clone() -> RBuilding:
     self.building_mode,
     self.functions,
     self.entrances.duplicate(),
-    self.position_tiles,
+    self.position_gt,
   )
 
-func clone_at(_new_position_tiles: Vector2) -> RBuilding:
+func clone_at(_new_position_gt: Vector2) -> RBuilding:
   var cloned: RBuilding = clone()
-  cloned.position_tiles = _new_position_tiles
+  cloned.position_gt = _new_position_gt
   return cloned
 
 func on_building_placed() -> void:
