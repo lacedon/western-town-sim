@@ -8,6 +8,9 @@
 extends Node
 class_name AbstractCitizenState
 
+static func try_translate_to(_current_state: AbstractCitizenState) -> AbstractCitizenState:
+  return null
+
 @export var unit: RUnit
 @export var node: Node2D
 @export var ai: CitizenAI

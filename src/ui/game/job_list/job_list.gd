@@ -18,7 +18,7 @@ func add_job(job: RJob) -> void:
 
 func update_job(job: RJob) -> void:
   var item_index : int = self.job_to_items.get(job)
-  self.set_item_text(item_index, job.name)
+  self.set_item_text(item_index, job.name + ": " + (job.assignee.name if job.assignee else "Unassigned"))
 
 func delete_job(job: RJob) -> void:
   var item_index : int = self.job_to_items.get(job)

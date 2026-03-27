@@ -1,5 +1,6 @@
 ## This state walk the unit to a target
 
+@abstract
 extends "./abstract_state.gd";
 
 const Thinker = preload("./thinker.gd")
