@@ -2,7 +2,10 @@
 
 extends Node
 
+@warning_ignore('UNUSED_SIGNAL')
 signal resource_updated(resource: TownResource, value_change: float)
+
+@warning_ignore('UNUSED_SIGNAL')
 signal max_resource_updated(resource: TownResource, value_change: float)
 
 @abstract class AbstractEconomyManager:

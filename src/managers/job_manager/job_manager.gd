@@ -3,8 +3,13 @@
 @abstract 
 extends Node
 
+@warning_ignore('UNUSED_SIGNAL')
 signal job_added(job: RJob)
+
+@warning_ignore('UNUSED_SIGNAL')
 signal job_updated(job: RJob)
+
+@warning_ignore('UNUSED_SIGNAL')
 signal job_deleted(job: RJob)
 
 @abstract func add_job(job: RJob) -> void

@@ -62,7 +62,7 @@ func _initBuilding() -> void:
   if !building: return _reset_building()
 
   var buildingSizeInPixels: Vector2i = building.size * GameConfig.tile_size
-  var buildingCenteringPosition: Vector2 = -buildingSizeInPixels / 2
+  var buildingCenteringPosition: Vector2 = -Vector2(buildingSizeInPixels) / 2
 
   sprite.texture = building.texture
 
