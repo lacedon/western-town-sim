@@ -2,7 +2,6 @@
 
 @abstract 
 extends Node
-class_name AbstractJobManager
 
 signal job_added(job: RJob)
 signal job_updated(job: RJob)
