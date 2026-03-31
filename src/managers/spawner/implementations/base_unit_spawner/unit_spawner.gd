@@ -3,7 +3,7 @@ extends "../../spawner.gd"
 
 const unit_scene = preload("res://src/components/unit/unit.tscn")
 
-@export var unitsContainer: Node
+@export var units_container: Node
 
 func spawn_unit(unit: RUnit, unit_position: Vector2) -> void:
   var unit_position_offset := Vector2(0.5, 0.5)
@@ -13,4 +13,4 @@ func spawn_unit(unit: RUnit, unit_position: Vector2) -> void:
   unit_node.unit = unit
   unit_node.position = (unit_position + unit_position_offset + unit_position_noise) * Vector2(GameConfig.tile_size)
   prints('Spawn unit', unit.name, 'at', unit_node.position)
-  unitsContainer.add_child(unit_node)
+  units_container.add_child(unit_node)

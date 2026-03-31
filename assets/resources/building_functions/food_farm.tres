@@ -12,5 +12,5 @@ metadata/_custom_type_script = "uid://bdir30nq4d176"
 [resource]
 script = ExtResource("2_upchf")
 resources = Array[ExtResource("1_upchf")]([SubResource("Resource_i3hq1")])
-maxWorkersToMine = 3
+max_workers_to_mine = 3
 metadata/_custom_type_script = "uid://oj4outpwpird"

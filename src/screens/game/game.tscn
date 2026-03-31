@@ -34,8 +34,8 @@ resources = null
 size = Vector2i(0, 0)
 position_offset = Vector2(0, 0)
 
-[node name="UnitSpawner" parent="ManagerController" unique_id=1104118351 node_paths=PackedStringArray("unitsContainer") instance=ExtResource("3_cts34")]
-unitsContainer = NodePath("../../Units")
+[node name="UnitSpawner" parent="ManagerController" unique_id=1104118351 node_paths=PackedStringArray("units_container") instance=ExtResource("3_cts34")]
+units_container = NodePath("../../Units")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1699835985]
 anchor_mode = 0

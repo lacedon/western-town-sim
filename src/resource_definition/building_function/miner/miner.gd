@@ -3,11 +3,11 @@ extends BuildingFunction
 class_name BuildingFunctionMiner
 
 @export var resources: Array[MinerResourceDefinition] = []
-@export var minWorkersToMine: int = 1
-@export var maxWorkersToMine: int = 5
+@export var min_workers_to_mine: int = 1
+@export var max_workers_to_mine: int = 5
 
 func on_building_placed(building: RBuilding) -> void:
-  for index in range(maxWorkersToMine):
+  for index in range(max_workers_to_mine):
     var job = RBuildingJob.new()
     job.name = "Work #" + str(index + 1) + " on " + building.name
     job.building = building

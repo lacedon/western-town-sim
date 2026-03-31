@@ -1,49 +1,49 @@
 extends PanelContainer
 
-@onready var labelNode: Label = $MarginContainer/HBoxContainer/Label
-@onready var labelDividerNode: Label = $MarginContainer/HBoxContainer/LabelDivider
-@onready var valueNode: Label = $MarginContainer/HBoxContainer/Value
-@onready var valueDividerNode: Label = $MarginContainer/HBoxContainer/ValueDivider
-@onready var maxValueNode: Label = $MarginContainer/HBoxContainer/Max
+@onready var _label_node: Label = $MarginContainer/HBoxContainer/Label
+@onready var _label_divider_node: Label = $MarginContainer/HBoxContainer/LabelDivider
+@onready var _value_node: Label = $MarginContainer/HBoxContainer/Value
+@onready var _value_divider_node: Label = $MarginContainer/HBoxContainer/ValueDivider
+@onready var _max_value_node: Label = $MarginContainer/HBoxContainer/Max
 
 @export var label: String = "Resource"
-@export var currentValue: int = 0
-@export var maxValue: int = 0
-@export var shouldShowMax: bool = true
+@export var current_value: int = 0
+@export var max_value: int = 0
+@export var should_show_max: bool = true
 @export var resource: TownResource
 
 func _ready() -> void:
-  _updateView()
+  _update_view()
 
 func update_value(change: int) -> void:
-  set_value(currentValue + change)
+  set_value(current_value + change)
 
 func update_max_value(change: int) -> void:
-  set_max_value(maxValue + change)
+  set_max_value(max_value + change)
 
 func set_value(newValue: int) -> void:
-  currentValue = newValue
-  _updateView()
+  current_value = newValue
+  _update_view()
 
 func set_max_value(newValue: int) -> void:
-  maxValue = newValue
-  _updateView()
+  max_value = newValue
+  _update_view()
 
-func _updateView() -> void:
+func _update_view() -> void:
   if label:
-    labelDividerNode.show()
-    labelNode.show()
-    labelNode.text = label
+    _label_divider_node.show()
+    _label_node.show()
+    _label_node.text = label
   else:
-    labelDividerNode.hide()
-    labelNode.hide()
+    _label_divider_node.hide()
+    _label_node.hide()
 
-  valueNode.text = str(currentValue)
+  _value_node.text = str(current_value)
 
-  if shouldShowMax:
-    valueDividerNode.show()
-    maxValueNode.show()
-    maxValueNode.text = str(maxValue)
+  if should_show_max:
+    _value_divider_node.show()
+    _max_value_node.show()
+    _max_value_node.text = str(max_value)
   else:
-    valueDividerNode.hide()
-    maxValueNode.hide()
+    _value_divider_node.hide()
+    _max_value_node.hide()
