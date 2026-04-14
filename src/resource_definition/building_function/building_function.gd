@@ -14,5 +14,5 @@ func on_building_placed(_building: RBuilding) -> void:
 func on_building_destroyed(_building: RBuilding) -> void:
   pass
 
-func on_day_change(_building: RBuilding, _position: Vector2) -> void:
+func on_day_change(_building: RBuilding) -> void:
   pass

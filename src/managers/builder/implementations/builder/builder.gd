@@ -53,8 +53,6 @@ func start_building(building: RBuilding) -> void:
   _is_building_started = true
   _set_up_building_offset(building)
 
-  # building_node = BuildingScene.instantiate()
-  # building_node.set_mode(BuildingNode.BuildingMode.builder)
   building_node.set_building(building)
   building_node.show()
 
@@ -71,16 +69,11 @@ func _set_up_building_offset(building: RBuilding) -> void:
 ## Place one building at the position in game tiles
 func _place_building(position_gt: Vector2) -> BuildingNode:
   var building_position_px: Vector2 = CoordinateParser.game_tiles_to_pixels(position_gt) + _building_offset_px
-  var building_top_left_corner_gt = Vector2(
-    round(position_gt.x - float(building_node.building.size.x) / 2),
-    round(position_gt.y - float(building_node.building.size.y) / 2)
-  )
 
   # TODO: Rewrite to use entity-pool
   var building: BuildingNode = BuildingNode.clone(building_node)
   building.mode = BuildingNode.BuildingMode.placed
   building.position = building_position_px
-  building.building = building.building.clone_at(building_top_left_corner_gt)
 
   building_container.add_child(building)
   building.building.on_building_placed()

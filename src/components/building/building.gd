@@ -1,6 +1,7 @@
 extends Node2D
 class_name BuildingNode
 
+const CoordinateParser = preload("res://src/common/coordinate_parser.gd")
 const BuildingScene = preload('./building.tscn')
 
 enum BuildingMode {
@@ -22,6 +23,10 @@ const ModeColors = {
 
 @export var mode: BuildingMode = BuildingMode.planing
 @export var building: RBuilding = null
+@export var collision_offset: Vector2 = Vector2(2, 2)
+
+var _building_size_px: Vector2 = Vector2.ZERO
+var _top_left_edge_position: Vector2 = Vector2.ZERO
 
 static func clone(original_building: BuildingNode) -> BuildingNode:
   return BuildingNode.create(original_building.building, original_building.mode, original_building.position)
@@ -58,27 +63,34 @@ func _exit_tree() -> void:
   if mode != BuildingMode.builder:
     StateController.day_timer.start_of_day.disconnect(_handle_start_of_day)
 
-func _init_building() -> void:
+func _init_building(_new_building: RBuilding = null) -> void:
+  prints(self, "_init_building", building, _new_building)
+  if _new_building:
+    building = _new_building.clone_at(CoordinateParser.pixels_to_game_tiles(self.position))
+  elif building:
+    building.position_gt = CoordinateParser.pixels_to_game_tiles(self.position)
+
   if !building: return _reset_building()
 
-  var building_size_px: Vector2i = building.size * GameConfig.tile_size
-  var center_position_px: Vector2 = -Vector2(building_size_px) / 2
+  _building_size_px = CoordinateParser.game_tiles_to_pixels(building.size)
+  _top_left_edge_position = -Vector2(float(_building_size_px.x / 2), float(_building_size_px.y / 2))
 
   _sprite.texture = building.texture
 
-  _coloring_block.size = building_size_px
-  _coloring_block.position = center_position_px
+  _coloring_block.size = _building_size_px
+  _coloring_block.position = _top_left_edge_position
   update_coloring()
   _coloring_block.show()
 
-  _collision_object.shape.size = building_size_px - Vector2i(2, 2)
-  _collision_object.position = Vector2i.ONE
+  _collision_object.shape.size = _building_size_px - collision_offset
+  _collision_object.position = Vector2.ONE
 
   _collision_area.show()
   _collision_area.monitorable = mode == BuildingMode.placed
   _collision_area.monitoring = mode == BuildingMode.planing || mode == BuildingMode.builder
 
 func _reset_building() -> void:
+  _building_size_px = Vector2.ZERO
   _sprite.texture = null
   _coloring_block.hide()
   _collision_area.hide()
@@ -87,8 +99,8 @@ func _handle_area_enter_exit(_area: Area2D) -> void:
   update_coloring()
 
 func set_building(_building: RBuilding) -> void:
-  building = _building
-  _init_building()
+  prints("set_building", _building)
+  _init_building(_building)
 
 func can_be_placed() -> bool:
   return !_collision_area.has_overlapping_areas()
@@ -110,35 +122,23 @@ func update_coloring() -> void:
       _coloring_block.color = ModeColors.normal
 
 func _emit_obstacle_added_event() -> void:
-  var building_size_px: Vector2 = building.size * GameConfig.tile_size
   StateController.navigation_server.add_environment_obstacle(
-    position - Vector2(float(building_size_px.x / 2), float(building_size_px.y / 2)),
-    building_size_px
+    position - Vector2(float(_building_size_px.x / 2), float(_building_size_px.y / 2)),
+    _building_size_px
   )
 
 func _handle_mode_set_placed() -> void:
   _emit_obstacle_added_event()
   _create_entrance()
 
-func _get_top_left_edge_position() -> Vector2:
-  var building_size_pixels: Vector2 = building.size * GameConfig.tile_size
-  return Vector2(-float(building_size_pixels.x / 2), -float(building_size_pixels.y / 2))
-
 func _create_entrance() -> void:
-  var top_left_edge_position: Vector2 = self._get_top_left_edge_position()
-
   for entrance in building.entrances:
-    var entranceNode: Polygon2D = Polygon2D.new()
+    var entranceNode: ColorRect = ColorRect.new()
     entranceNode.color = Color(0, 0.75, 0.95, 0.25)
-    entranceNode.polygon = PackedVector2Array([
-      Vector2(0, 0),
-      Vector2(GameConfig.tile_size.x, 0),
-      Vector2(GameConfig.tile_size.x, GameConfig.tile_size.y),
-      Vector2(0, GameConfig.tile_size.y)
-    ])
-    entranceNode.position = top_left_edge_position + Vector2(entrance.x * GameConfig.tile_size.x, entrance.y * GameConfig.tile_size.y)
+    entranceNode.size = GameConfig.tile_size
+    entranceNode.position = _top_left_edge_position + CoordinateParser.game_tiles_to_pixels(entrance)
     add_child(entranceNode)
 
 func _handle_start_of_day() -> void:
   if self.building && self.mode == BuildingMode.placed:
-    self.building.on_day_change((self.position + self._get_top_left_edge_position()) / Vector2(GameConfig.tile_size))
+    self.building.on_day_change()

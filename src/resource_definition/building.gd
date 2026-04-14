@@ -59,9 +59,9 @@ func on_building_destroyed() -> void:
   for function in functions:
     function.on_building_destroyed(self)
 
-func on_day_change(position: Vector2) -> void:
+func on_day_change() -> void:
   for function in functions:
-    function.on_day_change(self, position)
+    function.on_day_change(self)
 
 ## Returns absolute position of a random entrance in game tile coordinates
 func get_entrance_position_gt() -> Vector2:
