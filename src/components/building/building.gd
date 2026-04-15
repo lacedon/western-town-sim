@@ -26,7 +26,7 @@ const ModeColors = {
 @export var collision_offset: Vector2 = Vector2(2, 2)
 
 var _building_size_px: Vector2 = Vector2.ZERO
-var _top_left_edge_position: Vector2 = Vector2.ZERO
+var _top_left_edge_position_px: Vector2 = Vector2.ZERO
 
 static func clone(original_building: BuildingNode) -> BuildingNode:
   return BuildingNode.create(original_building.building, original_building.mode, original_building.position)
@@ -63,22 +63,24 @@ func _exit_tree() -> void:
   if mode != BuildingMode.builder:
     StateController.day_timer.start_of_day.disconnect(_handle_start_of_day)
 
-func _init_building(_new_building: RBuilding = null) -> void:
-  prints(self, "_init_building", building, _new_building)
-  if _new_building:
-    building = _new_building.clone_at(CoordinateParser.pixels_to_game_tiles(self.position))
-  elif building:
-    building.position_gt = CoordinateParser.pixels_to_game_tiles(self.position)
+func _get_top_left_edge_position(buildingSize: Vector2) -> Vector2:
+  return Vector2(floor(float(buildingSize.x) / 2), floor(float(buildingSize.y) / 2))
 
-  if !building: return _reset_building()
+func _init_building(_new_building: RBuilding = null) -> void:
+  if _new_building: building = _new_building.clone()
+
+  if building:
+    building.position_gt = CoordinateParser.pixels_to_game_tiles(self.position) - _get_top_left_edge_position(building.size)
+  else:
+    return _reset_building()
 
   _building_size_px = CoordinateParser.game_tiles_to_pixels(building.size)
-  _top_left_edge_position = -Vector2(float(_building_size_px.x / 2), float(_building_size_px.y / 2))
+  _top_left_edge_position_px = -_get_top_left_edge_position(_building_size_px)
 
   _sprite.texture = building.texture
 
   _coloring_block.size = _building_size_px
-  _coloring_block.position = _top_left_edge_position
+  _coloring_block.position = _top_left_edge_position_px
   update_coloring()
   _coloring_block.show()
 
@@ -99,7 +101,6 @@ func _handle_area_enter_exit(_area: Area2D) -> void:
   update_coloring()
 
 func set_building(_building: RBuilding) -> void:
-  prints("set_building", _building)
   _init_building(_building)
 
 func can_be_placed() -> bool:
@@ -136,7 +137,7 @@ func _create_entrance() -> void:
     var entranceNode: ColorRect = ColorRect.new()
     entranceNode.color = Color(0, 0.75, 0.95, 0.25)
     entranceNode.size = GameConfig.tile_size
-    entranceNode.position = _top_left_edge_position + CoordinateParser.game_tiles_to_pixels(entrance)
+    entranceNode.position = _top_left_edge_position_px + CoordinateParser.game_tiles_to_pixels(entrance)
     add_child(entranceNode)
 
 func _handle_start_of_day() -> void:
