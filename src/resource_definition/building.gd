@@ -1,5 +1,7 @@
 extends Resource
 
+## Has all the static information to define the building
+## Should not contain any dynamic data. Use RBuildingState for that
 class_name RBuilding
 
 enum BuildingMode {
@@ -15,7 +17,6 @@ func _init(
   _building_mode: BuildingMode = self.building_mode,
   _functions: Array[BuildingFunction] = self.functions,
   _entrances: Array[Vector2] = self.entrances,
-  _position_gt: Vector2 = self.position_gt
 ):
   self.name = _name
   self.size = _size
@@ -23,7 +24,6 @@ func _init(
   self.building_mode = _building_mode
   self.functions = _functions
   self.entrances = _entrances
-  self.position_gt = _position_gt
 
 @export var name: String = ":: Building ::"
 @export var size: Vector2i = Vector2i.ONE
@@ -32,38 +32,20 @@ func _init(
 @export var functions: Array[BuildingFunction] = []
 ## Array of game tile coordinates for each entrance in the building
 @export var entrances: Array[Vector2] = []
-## Position of the building in game tile coordinates
-@export var position_gt: Vector2 = Vector2.ZERO
 
-func clone() -> RBuilding:
-  return RBuilding.new(
-    self.name,
-    self.size,
-    self.texture.duplicate(),
-    self.building_mode,
-    self.functions,
-    self.entrances.duplicate(),
-    self.position_gt,
-  )
-
-func clone_at(_new_position_gt: Vector2) -> RBuilding:
-  var cloned: RBuilding = clone()
-  cloned.position_gt = _new_position_gt
-  return cloned
-
-func on_building_placed() -> void:
+func on_building_placed(building_state: RBuildingState) -> void:
   for function in functions:
-    function.on_building_placed(self)
+    function.on_building_placed(self, building_state)
 
-func on_building_destroyed() -> void:
+func on_building_destroyed(building_state: RBuildingState) -> void:
   for function in functions:
-    function.on_building_destroyed(self)
+    function.on_building_destroyed(self, building_state)
 
-func on_day_change() -> void:
+func on_day_change(building_state: RBuildingState) -> void:
   for function in functions:
-    function.on_day_change(self)
+    function.on_day_change(self, building_state)
 
 ## Returns absolute position of a random entrance in game tile coordinates
-func get_entrance_position_gt() -> Vector2:
+func get_entrance_position_gt(building_state: RBuildingState) -> Vector2:
   var entrance: Vector2 = self.entrances.pick_random()
-  return position_gt + entrance
+  return building_state.position_gt + entrance

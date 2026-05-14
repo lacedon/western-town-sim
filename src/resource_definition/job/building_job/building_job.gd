@@ -6,3 +6,4 @@ extends RJob
 class_name RBuildingJob
 
 @export var building: RBuilding
+@export var building_state: RBuildingState

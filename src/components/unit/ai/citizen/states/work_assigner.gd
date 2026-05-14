@@ -20,7 +20,9 @@ func init() -> void:
     StateController.job_manager.assign_job(self.job, self.unit)
 
     if self.job.building:
-      self.target = CoordinateParser.game_tiles_center_to_pixels(self.job.building.get_entrance_position_gt())
+      self.target = CoordinateParser.game_tiles_center_to_pixels(
+        self.job.building.get_entrance_position_gt(self.job.building_state)
+      )
 
   super.init()
 

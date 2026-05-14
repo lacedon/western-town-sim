@@ -76,7 +76,8 @@ func _place_building(position_gt: Vector2) -> BuildingNode:
   building.position = building_position_px
 
   building_container.add_child(building)
-  building.building.on_building_placed()
+  # TODO: Rewrite to call from the building node
+  building.building.on_building_placed(building.building_state)
   return building
 
 ## Place a chain of building from _placing_start_coordinates_gt to 

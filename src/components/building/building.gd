@@ -23,6 +23,7 @@ const ModeColors = {
 
 @export var mode: BuildingMode = BuildingMode.planing
 @export var building: RBuilding = null
+@export var building_state: RBuildingState = RBuildingState.new()
 @export var collision_offset: Vector2 = Vector2(2, 2)
 
 var _building_size_px: Vector2 = Vector2.ZERO
@@ -66,13 +67,11 @@ func _exit_tree() -> void:
 func _get_top_left_edge_position(buildingSize: Vector2) -> Vector2:
   return Vector2(floor(float(buildingSize.x) / 2), floor(float(buildingSize.y) / 2))
 
-func _init_building(_new_building: RBuilding = null) -> void:
-  if _new_building: building = _new_building.clone()
-
-  if building:
-    building.position_gt = CoordinateParser.pixels_to_game_tiles(self.position) - _get_top_left_edge_position(building.size)
-  else:
+func _init_building() -> void:
+  if !building:
     return _reset_building()
+
+  building_state.position_gt = CoordinateParser.pixels_to_game_tiles(self.position) - _get_top_left_edge_position(building.size)
 
   _building_size_px = CoordinateParser.game_tiles_to_pixels(building.size)
   _top_left_edge_position_px = -_get_top_left_edge_position(_building_size_px)
@@ -101,7 +100,8 @@ func _handle_area_enter_exit(_area: Area2D) -> void:
   update_coloring()
 
 func set_building(_building: RBuilding) -> void:
-  _init_building(_building)
+  building = _building
+  _init_building()
 
 func can_be_placed() -> bool:
   return !_collision_area.has_overlapping_areas()
@@ -142,4 +142,4 @@ func _create_entrance() -> void:
 
 func _handle_start_of_day() -> void:
   if self.building && self.mode == BuildingMode.placed:
-    self.building.on_day_change()
+    self.building.on_day_change(self.building_state)
