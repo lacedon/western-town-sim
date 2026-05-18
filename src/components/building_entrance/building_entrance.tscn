@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c3entrance001"]
+
+[ext_resource type="Script" uid="uid://f6hc0o17g53m" path="res://src/components/building_entrance/building_entrance.gd" id="1_entrance"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_entrance"]
+resource_local_to_scene = true
+
+[node name="BuildingEntrance" type="Node2D" unique_id=938566786]
+script = ExtResource("1_entrance")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=303887902]
+offset_right = 32.0
+offset_bottom = 32.0
+color = Color(0, 0.75, 0.95, 0.25)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1503296448]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2116317776]
+shape = SubResource("RectangleShape2D_entrance")

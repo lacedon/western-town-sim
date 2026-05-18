@@ -64,8 +64,8 @@ func _exit_tree() -> void:
   if mode != BuildingMode.builder:
     StateController.day_timer.start_of_day.disconnect(_handle_start_of_day)
 
-func _get_top_left_edge_position(buildingSize: Vector2) -> Vector2:
-  return Vector2(floor(float(buildingSize.x) / 2), floor(float(buildingSize.y) / 2))
+func _get_top_left_edge_position(building_size: Vector2) -> Vector2:
+  return Vector2(floor(float(building_size.x) / 2), floor(float(building_size.y) / 2))
 
 func _init_building() -> void:
   if !building:
@@ -133,11 +133,17 @@ func _handle_mode_set_placed() -> void:
   _create_entrance()
 
 func _create_entrance() -> void:
+  var building_top_left_edge = (
+    _get_top_left_edge_position(building.size) +
+    Vector2(
+      (0 if building.size.x % 2 == 0 else 0.5),
+      (0 if building.size.y % 2 == 0 else 0.5),
+    )
+  )
   for entrance in building.entrances:
-    var entranceNode: ColorRect = ColorRect.new()
-    entranceNode.color = Color(0, 0.75, 0.95, 0.25)
-    entranceNode.size = GameConfig.tile_size
-    entranceNode.position = _top_left_edge_position_px + CoordinateParser.game_tiles_to_pixels(entrance)
+    var entranceNode: BuildingEntrance = BuildingEntrance.create(
+      entrance - building_top_left_edge
+    )
     add_child(entranceNode)
 
 func _handle_start_of_day() -> void:
