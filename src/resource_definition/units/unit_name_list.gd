@@ -2,13 +2,11 @@ extends Resource
 
 class_name UnitNameList
 
-const Random = preload("res://src/common/random.gd")
-
 @export var name_options: Array[UnitNameOptions] = []
 
-func get_name() -> String:
+func generate_name() -> String:
   var options := _get_default_options()
-  return  "" if options == null else options.get_name()
+  return  "" if options == null else options.generate_name()
 
 func _get_default_options() -> UnitNameOptions:
   for options in name_options:

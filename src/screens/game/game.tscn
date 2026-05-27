@@ -9,14 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://cxkurqrmxefm0" path="res://src/components/grid/grid.tscn" id="3_qmidl"]
 [ext_resource type="PackedScene" uid="uid://qgkmhmaf33px" path="res://src/managers/day_timer/implementations/day_timer/day_timer.tscn" id="5_brlkd"]
 [ext_resource type="PackedScene" uid="uid://c05ofa1jope1o" path="res://src/managers/navigation_server/implementations/base_navigation_server/base_navigation_server.tscn" id="5_ia08b"]
+[ext_resource type="PackedScene" path="res://src/managers/name_generator/implementations/base_name_generator/base_name_generator.tscn" id="8_i545r"]
 
 [node name="Game" type="Node2D" unique_id=1018720308]
 
-[node name="ManagerController" parent="." unique_id=2684897 node_paths=PackedStringArray("builder", "day_timer", "economy_manager", "job_manager", "navigation_server", "spawner") instance=ExtResource("1_brlkd")]
+[node name="ManagerController" parent="." unique_id=2684897 node_paths=PackedStringArray("builder", "day_timer", "economy_manager", "job_manager", "name_generator", "navigation_server", "spawner") instance=ExtResource("1_brlkd")]
 builder = NodePath("Builder")
 day_timer = NodePath("DayTimer")
 economy_manager = NodePath("EconomyManager")
 job_manager = NodePath("BaseJobManager")
+name_generator = NodePath("BaseNameGenerator")
 navigation_server = NodePath("Navigation")
 spawner = NodePath("UnitSpawner")
 
@@ -36,6 +38,8 @@ position_offset = Vector2(0, 0)
 
 [node name="UnitSpawner" parent="ManagerController" unique_id=1104118351 node_paths=PackedStringArray("units_container") instance=ExtResource("3_cts34")]
 units_container = NodePath("../../Units")
+
+[node name="BaseNameGenerator" parent="ManagerController" unique_id=1057763912 instance=ExtResource("8_i545r")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1699835985]
 anchor_mode = 0

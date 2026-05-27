@@ -3,4 +3,4 @@
 @abstract
 extends Node
 
-@abstract func get_unit_name() -> String
+@abstract func generate_name() -> String

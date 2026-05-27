@@ -5,7 +5,7 @@ class_name RUnitState
 func _init(
   _unit: RUnit = self.unit,
   _unit_name: String = self.unit_name,
-  building: RBuildingState = self.building
+  _building: RBuildingState = self.building
 ):
   self.unit = _unit
   self.unit_name = _unit_name
