@@ -12,13 +12,13 @@ const AIHelper = preload('./ai/ai.gd')
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
 var _ai_agent: UnitAIAbstract
-var state: RUnitState
+var state: RUnitState = null
 
 func _ready() -> void:
   if !self.visible: return
   if !unit: return
 
-  state = RUnitState.new(get_rid())
+  state = RUnitState.new(self.unit)
 
   sprite.texture = unit.texture
   _ai_agent = AIHelper.get_ai_agent(unit, self)
