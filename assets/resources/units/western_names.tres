@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="UnitNameOptions" format=3 uid="uid://ct5k3x8mr2pq7"]
+
+[ext_resource type="Script" path="res://src/resource_definition/units/unit_name_options.gd" id="1_opts"]
+
+[resource]
+script = ExtResource("1_opts")
+is_default = true
+first_names = Array[String](["Jesse", "Billy", "Wyatt", "Clint", "Buck", "Hank", "Clay", "Cole", "Duke", "Earl", "Frank", "Gus", "Jake", "Luke", "Colt"])
+last_names = Array[String](["Holliday", "Earp", "James", "Cassidy", "Garrett", "Dalton", "Hickok", "Masterson", "Horn", "Bass", "Curry", "Ringo", "Fisher", "Logan", "Sundance"])

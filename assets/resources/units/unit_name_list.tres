@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="UnitNameList" format=3 uid="uid://b4nw9yz6dh1je"]
+
+[ext_resource type="Script" path="res://src/resource_definition/units/unit_name_list.gd" id="1_list"]
+[ext_resource type="Resource" uid="uid://ct5k3x8mr2pq7" path="res://assets/resources/units/western_names.tres" id="2_opts"]
+
+[resource]
+script = ExtResource("1_list")
+name_options = Array[UnitNameOptions]([ExtResource("2_opts")])
