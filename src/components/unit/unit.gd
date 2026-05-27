@@ -18,7 +18,7 @@ func _ready() -> void:
   if !self.visible: return
   if !unit: return
 
-  state = RUnitState.new(self.unit)
+  state = RUnitState.new(self.unit, StateController.name_generator.generate_name())
 
   sprite.texture = unit.texture
   _ai_agent = AIHelper.get_ai_agent(unit, self)
