@@ -6,7 +6,7 @@ const Thinker = preload("./states/thinker.gd")
 var state: AbstractCitizenState
 
 func init() -> void:
-  set_state(Thinker.new().define(self.unit, self.node, self))
+  set_state(Thinker.new().define(self.unit, self.unit_state, self.node, self))
 
 func set_state(new_state: AbstractCitizenState) -> void:
   if self.state: self.state.stop()

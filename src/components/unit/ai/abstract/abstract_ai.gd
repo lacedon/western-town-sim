@@ -25,15 +25,18 @@ signal target_changed(target: Vector2)
 signal animation_changed() # TODO: Add animation staff here
 
 @export var unit: RUnit
+@export var unit_state: RUnitState
 @export var node: Node2D
 
 var is_moving: bool = false
 
 func _init(
   _unit: RUnit,
+  _unit_state: RUnitState,
   _node: Node2D,
 ) -> void:
   unit = _unit
+  unit_state = _unit_state
   node = _node
 
 

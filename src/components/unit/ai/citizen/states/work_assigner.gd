@@ -17,7 +17,7 @@ static func try_translate_to(current_state: AbstractCitizenState) -> AbstractCit
 
 func init() -> void:
   if self.job:
-    StateController.job_manager.assign_job(self.job, self.unit)
+    StateController.job_manager.assign_job(self.job, self.unit_state)
 
     if self.job.building:
       self.target = CoordinateParser.game_tiles_center_to_pixels(

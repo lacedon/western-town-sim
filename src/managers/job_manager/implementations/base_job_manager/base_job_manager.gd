@@ -18,10 +18,10 @@ func remove_jobs(jobs_to_remove: Array[RJob]) -> void:
   for job in jobs_to_remove:
     remove_job(job)
 
-func assign_job(job: RJob, unit: RUnit) -> void:
+func assign_job(job: RJob, unit_state: RUnitState) -> void:
   if job.assignee: return
 
-  job.assignee = unit
+  job.assignee = unit_state
   self.job_updated.emit(job)
 
 func is_job_available(job: RJob) -> bool:

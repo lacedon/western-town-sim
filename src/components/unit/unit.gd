@@ -21,7 +21,7 @@ func _ready() -> void:
   state = RUnitState.new(self.unit, StateController.name_generator.generate_name())
 
   sprite.texture = unit.texture
-  _ai_agent = AIHelper.get_ai_agent(unit, self)
+  _ai_agent = AIHelper.get_ai_agent(unit, state, self)
   _ai_agent.connect(_ai_agent.target_changed.get_name(), set_target_position)
   _ai_agent.init()
   add_child(_ai_agent)

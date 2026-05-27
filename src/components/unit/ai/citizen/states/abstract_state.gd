@@ -12,17 +12,19 @@ static func try_translate_to(_current_state: AbstractCitizenState) -> AbstractCi
   return null
 
 @export var unit: RUnit
+@export var unit_state: RUnitState
 @export var node: Node2D
 @export var ai: CitizenAI
 
-func define(new_unit: RUnit, new_node: Node2D, new_ai: CitizenAI) -> AbstractCitizenState:
+func define(new_unit: RUnit, new_unit_state: RUnitState, new_node: Node2D, new_ai: CitizenAI) -> AbstractCitizenState:
   self.unit = new_unit
+  self.unit_state = new_unit_state
   self.node = new_node
   self.ai = new_ai
   return self
 
 func copy(state: AbstractCitizenState) -> AbstractCitizenState:
-  return self.define(state.unit, state.node, state.ai)
+  return self.define(state.unit, state.unit_state, state.node, state.ai)
 
 func stop() -> void:
   pass
