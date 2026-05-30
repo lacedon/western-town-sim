@@ -71,6 +71,7 @@ func _init_building() -> void:
   if !building:
     return _reset_building()
 
+  building_state.building = building
   building_state.position_gt = CoordinateParser.pixels_to_game_tiles(self.position) - _get_top_left_edge_position(building.size)
 
   _building_size_px = CoordinateParser.game_tiles_to_pixels(building.size)

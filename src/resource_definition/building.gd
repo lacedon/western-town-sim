@@ -35,15 +35,15 @@ func _init(
 
 func on_building_placed(building_state: RBuildingState) -> void:
   for function in functions:
-    function.on_building_placed(self, building_state)
+    function.on_building_placed(building_state)
 
 func on_building_destroyed(building_state: RBuildingState) -> void:
   for function in functions:
-    function.on_building_destroyed(self, building_state)
+    function.on_building_destroyed(building_state)
 
 func on_day_change(building_state: RBuildingState) -> void:
   for function in functions:
-    function.on_day_change(self, building_state)
+    function.on_day_change(building_state)
 
 ## Returns absolute position of a random entrance in game tile coordinates
 func get_entrance_position_gt(building_state: RBuildingState) -> Vector2:
