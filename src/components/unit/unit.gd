@@ -20,6 +20,9 @@ func _ready() -> void:
 
   state = RUnitState.new(self.unit, StateController.name_generator.generate_name())
 
+  state.connect(state.entered_in_building.get_name(), handle_entered_in_building)
+  state.connect(state.exited_from_building.get_name(), handle_exited_from_building)
+
   sprite.texture = unit.texture
   _ai_agent = AIHelper.get_ai_agent(unit, state, self)
   _ai_agent.connect(_ai_agent.target_changed.get_name(), set_target_position)
@@ -29,6 +32,9 @@ func _ready() -> void:
 func _exit_tree() -> void:
   if _ai_agent:
     _ai_agent.disconnect(_ai_agent.target_changed.get_name(), set_target_position)
+  if state:
+    state.disconnect(state.entered_in_building.get_name(), handle_entered_in_building)
+    state.disconnect(state.exited_from_building.get_name(), handle_exited_from_building)
 
 func _physics_process(delta: float) -> void:
   if _ai_agent.is_moving: move_to_target(delta)
@@ -43,3 +49,10 @@ func move_to_target(delta: float) -> void:
 
   if navigation_agent.is_navigation_finished():
     _ai_agent.target_reached()
+
+func handle_entered_in_building() -> void:
+  hide()
+
+func handle_exited_from_building() -> void:
+  # TODO: Probably need to update to position as well
+  show()

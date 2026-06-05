@@ -27,5 +27,8 @@ func init() -> void:
   super.init()
 
 func target_reached() -> void:
-  # TODO: Right now this state is used to go to work. Need to transit to work state once the target is reached
-  pass
+  if (
+    self.job.building_state.can_unit_enter(self.unit_state) &&
+    self.unit_state.can_enter_building(self.job.building_state)
+  ):
+    self.unit_state.enter_building(self.job.building_state)
