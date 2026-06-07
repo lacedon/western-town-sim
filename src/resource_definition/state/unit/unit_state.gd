@@ -25,6 +25,7 @@ func can_exit_building() -> bool:
 
 func enter_building(building_state: RBuildingState) -> void:
   self.building = building_state
+  building_state.unit_enter(self)
   self.entered_in_building.emit()
 
 func exit_building(_is_silently: bool) -> void:

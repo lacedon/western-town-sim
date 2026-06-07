@@ -20,6 +20,7 @@ const ModeColors = {
 @onready var _coloring_block: ColorRect = $ColoringBlock
 @onready var _collision_area: Area2D = $Area2D
 @onready var _collision_object: CollisionShape2D = $Area2D/CollisionShape2D
+@onready var _places_icons_container: Control = $PlacesIcons
 
 @export var mode: BuildingMode = BuildingMode.planing
 @export var building: RBuilding = null
@@ -47,6 +48,7 @@ func _ready() -> void:
     return
 
   _init_building()
+  _redraw_unit_icons()
 
   if mode != BuildingMode.builder:
     StateController.day_timer.start_of_day.connect(_handle_start_of_day)
@@ -63,6 +65,9 @@ func _exit_tree() -> void:
 
   if mode != BuildingMode.builder:
     StateController.day_timer.start_of_day.disconnect(_handle_start_of_day)
+
+  if mode == BuildingMode.placed:
+    building_state.units_inside_changed.disconnect(_redraw_unit_icons)
 
 func _get_top_left_edge_position(building_size: Vector2) -> Vector2:
   return Vector2(floor(float(building_size.x) / 2), floor(float(building_size.y) / 2))
@@ -90,6 +95,9 @@ func _init_building() -> void:
   _collision_area.show()
   _collision_area.monitorable = mode == BuildingMode.placed
   _collision_area.monitoring = mode == BuildingMode.planing || mode == BuildingMode.builder
+
+  _places_icons_container.position = _top_left_edge_position_px
+  _places_icons_container.size = _building_size_px
 
 func _reset_building() -> void:
   _building_size_px = Vector2.ZERO
@@ -129,9 +137,31 @@ func _emit_obstacle_added_event() -> void:
     _building_size_px
   )
 
+func _redraw_unit_icons() -> void:
+  for child in _places_icons_container.get_children():
+    child.queue_free()
+
+  var count := building_state.units_inside_workers.size()
+  if count == 0:
+    return
+
+  var icon_size := Vector2(GameConfig.tile_size) / 3
+  var center := _building_size_px / 2
+  var radius: float = min(_building_size_px.x, _building_size_px.y) / 2 * 0.6
+  var circle_count: int = max(count, 8)
+
+  for i in count:
+    var angle := 1.5 * PI + 2 * PI * (circle_count - i) / circle_count
+    var icon := ColorRect.new()
+    icon.color = Color(0.5, 1, 0.5, 0.8)
+    icon.size = icon_size
+    icon.position = center + Vector2(cos(angle), sin(angle)) * radius - icon_size / 2
+    _places_icons_container.add_child(icon)
+
 func _handle_mode_set_placed() -> void:
   _emit_obstacle_added_event()
   _create_entrance()
+  building_state.units_inside_changed.connect(_redraw_unit_icons)
 
 func _create_entrance() -> void:
   var building_top_left_edge = (
