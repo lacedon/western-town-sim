@@ -24,6 +24,11 @@ config/icon="res://icon.svg"
 GameConfig="*res://src/global/game_config.gd"
 EventEmitter="*res://src/global/event_emitter.gd"
 StateController="*uid://tktjuo3h36yh"
+_mcp_game_helper="*res://addons/godot_ai/runtime/game_helper.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_ai/plugin.cfg")
 
 [layer_names]
 
