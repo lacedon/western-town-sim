@@ -45,6 +45,10 @@ func on_day_change(building_state: RBuildingState) -> void:
   for function in functions:
     function.on_day_change(building_state)
 
+func on_process(building_state: RBuildingState, delta: float) -> void:
+  for function in functions:
+    function.on_process(building_state, delta)
+
 ## Returns absolute position of a random entrance in game tile coordinates
 func get_entrance_position_gt(building_state: RBuildingState) -> Vector2:
   var entrance: Vector2 = self.entrances.pick_random()

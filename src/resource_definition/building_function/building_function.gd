@@ -16,3 +16,7 @@ func on_building_destroyed(_building_state: RBuildingState) -> void:
 
 func on_day_change(_building_state: RBuildingState) -> void:
   pass
+
+## Called every frame while the building is placed. `delta` is the frame time in seconds
+func on_process(_building_state: RBuildingState, _delta: float) -> void:
+  pass

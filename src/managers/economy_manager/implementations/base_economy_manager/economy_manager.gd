@@ -89,3 +89,11 @@ func use_resource(required_resource: TownResource) -> bool:
   if !has_enough_resource(required_resource): return false
   _use_resource_with_no_check(required_resource)
   return true;
+
+## Whether `amount` more of the resource can be added without exceeding its max_value.
+## Resources not tracked yet are assumed to have no cap.
+func has_room_for_resource(resource_name: String, amount: float) -> bool:
+  for resource in resources:
+    if resource.name == resource_name:
+      return resource.value + amount <= resource.max_value
+  return true

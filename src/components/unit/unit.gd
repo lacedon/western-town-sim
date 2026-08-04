@@ -25,6 +25,7 @@ func _ready() -> void:
 
   sprite.texture = unit.texture
   _ai_agent = AIHelper.get_ai_agent(unit, state, self)
+  state.ai_agent = _ai_agent
   _ai_agent.connect(_ai_agent.target_changed.get_name(), set_target_position)
   _ai_agent.init()
   add_child(_ai_agent)

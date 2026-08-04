@@ -163,6 +163,15 @@ func _handle_mode_set_placed() -> void:
   _create_entrance()
   building_state.units_inside_changed.connect(_redraw_unit_icons)
 
+  if _provides_storage():
+    add_to_group(&"storage_buildings")
+
+func _provides_storage() -> bool:
+  for function in building.functions:
+    if function is BuildingFunctionStorage:
+      return true
+  return false
+
 func _create_entrance() -> void:
   var building_top_left_edge = (
     _get_top_left_edge_position(building.size) +
@@ -180,3 +189,7 @@ func _create_entrance() -> void:
 func _handle_start_of_day() -> void:
   if self.building && self.mode == BuildingMode.placed:
     self.building.on_day_change(self.building_state)
+
+func _process(delta: float) -> void:
+  if self.building && self.mode == BuildingMode.placed:
+    self.building.on_process(self.building_state, delta)

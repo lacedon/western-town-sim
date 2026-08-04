@@ -29,6 +29,8 @@ func enter_building(building_state: RBuildingState) -> void:
   self.entered_in_building.emit()
 
 func exit_building(_is_silently: bool) -> void:
+  if self.building:
+    self.building.unit_exit(self)
   self.building = null
   self.exited_from_building.emit()
 
@@ -38,3 +40,6 @@ func exit_building(_is_silently: bool) -> void:
 @export var name: String = ""
 ## The building the unit is currently in. Null if unit is not in the building
 @export var building: RBuildingState = null
+## Reference to the unit's AI node, set by UnitNode when the unit is created.
+## Not persisted — lets game logic command the unit's AI directly (e.g. send it on an errand)
+var ai_agent: Node = null
